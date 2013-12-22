@@ -1,0 +1,214 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container" id="top">
+    <div class="page-header">
+        <h1><small><a href="/docs">Docs</a> &raquo; </small>Quick Start</h1>
+    </div>
+
+    <p class="lead">
+        A quick start introduction to Phavour.
+    </p>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#top" class="list-group-item">Quick Start</a>
+                <a href="#file-and-folder-structure" class="list-group-item">File &amp; Folder Structure</a>
+                <a href="#naming-conventions" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;Naming Conventions</a>
+                <a href="#config-and-routes" class="list-group-item">Config &amp; Routes</a>
+                <a href="#application-config" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;Application Config</a>
+                <a href="#application-routes" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;Application Routes</a>
+                <a href="#hello-phavour" class="list-group-item">Hello Phavour!</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h2 id="file-and-folder-structure">File &amp; Folder Structure</h2>
+            <p>
+                As with any framework, Phavour requires your application files to be structured in a certain format.
+            </p>
+
+            <pre>/lib
+    /Phavour (the Phavour library)
+/res
+    /config.php
+    /routes.php
+/src
+    /DefaultPackage
+        /src
+            /<span class="text-success"><b>Error</b></span>.php
+            /<span class="text-primary"><b>Index</b></span>.php
+        /res
+            /config.php
+            /routes.php
+            /view
+                /<span class="text-primary"><b>index</b></span>
+                    /index.phtml
+                /<span class="text-success"><b>error</b></span>
+                    /notFound.phtml
+                    /uncaughtException.phtml
+            /layout
+                /my-layout.phtml
+/web
+    /index.php (this is ultimately your web root)</pre>
+
+            <hr>
+            <h2 id="naming-conventions">Naming Conventions</h2>
+            <p>
+                Names of folders and files are very important inside of Phavour. In fact, without naming things correctly, your application will not run.<br />
+                As seen in the structure overview above, there are 2 different colours highlighted.
+            </p>
+            <p>
+                Take the class name <span class="text-primary"><b>Index</b></span>. All of the views for this class will be held in the <code>/src/DefaultPackage/res/view/<span class="text-primary"><b>index</b></span></code> folder.<br />
+                If your request calls: <code>Error::myInsideMethod()</code>, then the application will expect there to be a file located in: <code>/src/DefaultPackage/res/view/<span class="text-primary"><b>index</b></span>/myInsideMethod.phtml</code>.
+            </p>
+
+            <div class="alert alert-warning">
+                The application requires that there is a <code>DefaultPackage</code> which contains an <code>Error</code> class. This class must contain the following methods:<br />
+                <code>notFound()</code><br />
+                <code>uncaughtException()</code><br />
+                Without this class, your users won't be given nice error pages. You are, however, encouraged to customise the views accordingly.
+            </div>
+
+            <hr>
+            <h2 id="config-and-routes">Config &amp; Routes</h2>
+            <p>
+                As seen above, there are <code>config.php</code> and <code>routes.php</code> files. These tell the application about certain settings (that you want available in your runnables) and also about where to send the requests (route the request).
+            </p>
+
+            <hr>
+            <h2 id="application-config">Application Config <small>(<code>/res/config.php</code>)</small></h2>
+            <p>
+                This file is the main configuration for the application. It's your chance to tell the application about any custom ini settings, and override any configuration that might have been specified by a 3rd Party Package.
+            </p>
+
+            <p>
+                Take this as an example:
+            </p>
+
+            <pre>&lt;php
+return array(
+    'ini.set' =&gt; array(
+        'display_errors' =&gt; 1,
+    ),
+    'DefaultPackage.exampleConfigKey' =&gt; 'this has been overridden'
+);</pre>
+
+            <p>
+                Phavour recognises the key of "ini.set" and loops through the keys, calling <code>ini_set($key, $value)</code> for each setting.
+            </p>
+            <p>
+                The key of "DefaultPackage.exampleConfigKey" would declare a different value for a configuration inside the <code>/src/DefaultPackage/res/config.php</code>. This makes it so much easier to reuse large amounts of your code across multiple projects.
+            </p>
+
+            <hr>
+            <h2 id="application-routes">Application Routes <small>(<code>/res/routes.php</code>)</small></h2>
+
+            <p>
+                We call this the application routes file. This (like the above <code>/res/config.php</code>) gives you a chance to override any routes that might have been specified by a 3rd Party Package.
+            </p>
+
+            <p>
+                Take this as an example:
+            </p>
+
+            <pre>&lt;?php
+return array(
+    'Default.user.name' =&gt; array(
+        'method' =&gt; 'GET|POST|PUT|DELETE',
+        'path' =&gt; '/user/{name}',
+        'runnable' =&gt; 'User::name',
+        'package' =&gt; 'DefaultPackage'
+    )
+);</pre>
+
+            <p>
+                The key (in this case 'Default.user.name') should always start with the Package name. Without the word 'Package' on the end. (This isn't required, but it's best practice)<br />
+                Therefore, this route would override the corresponding route from the <code>/src/DefaultPackage/res/routes.php</code> file.
+            </p>
+            <p>
+                Using the routes like this gives you simple reusable code across projects by centralising things inside of the 'Package' structure.
+            </p>
+
+            <hr>
+            <h1 id="hello-phavour">Hello Phavour!</h1>
+            <p>
+                Great, so hopefully you've grasped a basic concept of how the framework is structured. Let's make something cool!
+            </p>
+            <p>
+                Make a folder in <code>/src</code> called <code>HelloPackage</code>
+            </p>
+            <p>
+                Inside that folder, create these folders:
+                <div class="well">
+                    <code>src</code><br />
+                    <code>res</code><br />
+                    <code>res/view</code><br />
+                    <code>res/view/tutorial</code><br />
+                    <code>res/layout</code>
+                </div>
+            </p>
+            <p>
+                Now, go into the <code>/src/HelloPackage/src</code> folder and create a file called: <code>Tutorial.php</code><br />
+                OK. Open that file (<code>/src/HelloPackage/src/Tutorial.php</code>) and put this content in there:
+            </p>
+            <pre>&lt;?php
+namespace HelloPackage\src;
+
+use Phavour\Runnable;
+
+class Tutorial extends Runnable
+{
+    public function hello()
+    {
+        $this-&gt;view-&gt;name = 'Phavour!';
+    }
+}</pre>
+            <p>
+                You've just created your runnable!
+            </p>
+
+            <p>
+                Let's make a view! Inside the folder: <code>/src/HelloPackage/res/view/tutorial</code>, create a file called <code>hello.phtml</code>.
+            </p>
+
+            <p>
+                Now, open up that file (<code>/src/HelloPackage/res/view/tutorial/hello.phtml</code>), and put this content in:
+            </p>
+
+            <pre>&lt;h1&gt;Hello &lt;?php echo $this-&gt;name; ?&gt;&lt;/h1&gt;</pre>
+
+            <p>
+                Great, we've got the Runnable, we've got the method (action), and we've got a view. All that's left is to tell the application what requests to route to this class.
+            </p>
+
+            <p>
+                Create the file <code>routes.php</code> located in the <code>/src/HelloPackage/res</code> folder. The full path will be: <code>/src/HelloPackage/res/routes.php</code>
+            </p>
+
+            <p>
+                Inside the <code>/src/HelloPackage/res/routes.php</code> file, put this content:
+            </p>
+
+            <pre>&lt;?php
+return array(
+    'hello.tutorial.hello' =&gt; array(
+        'method' =&gt; 'GET|POST|PUT|DELETE',
+        'path' =&gt; '/tutorial/hello-phavour',
+        'runnable' =&gt; 'Tutorial::hello'
+    )
+);</pre>
+
+            <p>
+                Ready to fire it up?
+            </p>
+
+            <p>
+                Assuming you're running the application from localhost, you "should" be able to visit:<br />
+                <a href="http://localhost/tutorial/hello-phavour" target="_blank">http://localhost/tutorial/hello-phavour</a>
+            </p>
+
+            <p>That brings us to the end of the quick start. If you want, dive a bit deeper into the <a href="/docs">documentation</a></p>
+        </div>
+    </div>
+</div>

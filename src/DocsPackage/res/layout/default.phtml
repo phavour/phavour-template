@@ -1,0 +1,37 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Phavour Documentation</title>
+
+        <link href="/bootstrap-3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/docs.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="/bootstrap-3.0.0/js/html5shiv.js"></script>
+            <script src="/bootstrap-3.0.0/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+    <div id="wrap">
+        <?php
+        $this->inflate('../elements/docsHeader.phtml');
+        echo $this->content();
+        ?>
+    </div>
+    <?php
+    $this->inflate('../elements/docsFooter.phtml');
+    ?>
+    <script src="/bootstrap-3.0.0/js/jquery-1.7.1.min.js"></script>
+    <script src="/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

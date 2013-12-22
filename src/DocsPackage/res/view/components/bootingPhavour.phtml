@@ -1,0 +1,83 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container" id="top">
+    <div class="page-header">
+        <h1>Booting Phavour</h1>
+    </div>
+
+    <p class="lead">
+        Controlling the boot of Phavour.
+    </p>
+
+    <p>
+        The <code>/web/index.php</code> controls the users entry into your application, and comes with a few minor settings.
+    </p>
+
+    <hr>
+    <h2 id="basic-configuration">Basic Configuration</h2>
+
+    <p>
+        Below is an example of the minimum content for a Phavour index.php file.
+    </p>
+
+    <pre>&lt;?php
+include '/path/to/autoloader.php';
+$dir = realpath(__DIR__ . '/../');
+$app = new \Phavour\Application($dir);
+$app-&gt;setup();
+$app-&gt;run();</pre>
+
+    <hr>
+    <h2 id="setting-the-environment">Setting The Environment</h2>
+
+    <p>
+        Phavour recognises the environments of <code>test</code>, <code>development</code>, and <code>production</code>.<br />
+        If you don't specify the <code>APPLICATION_ENV</code> then the application will default to production and won't show useful information while developing.
+    </p>
+
+    <pre>&lt;?php
+include '/path/to/autoloader.php';
+define('APPLICATION_ENV', 'development');
+$dir = realpath(__DIR__ . '/../');
+$app = new \Phavour\Application($dir);
+$app-&gt;setup();
+$app-&gt;run();</pre>
+
+    <hr>
+    <h2 id="setting-the-environment">Add a Cache</h2>
+
+    <p>
+        Phavour caches data whenever possible. Doing so means less boot time for the application, and overall provides you with a fluid interface to speed up your application at runtime.
+    </p>
+
+    <div class="alert alert-warning">
+        While the application is in not in the <code>production</code> environment, Phavour will not utilise a cache.<br />
+        It uses the null cache adapter, called: <code>\Phavour\Cache\AdapterNull</code> which will always return false
+    </div>
+
+    <pre>&lt;?php
+include '/path/to/autoloader.php';
+define('APPLICATION_ENV', 'production');
+$dir = realpath(__DIR__ . '/../');
+$app = new \Phavour\Application($dir);
+
+$cacheConfig = array(
+    array(
+        'host' =&gt; 'localhost',
+        'port' =&gt; 11211,
+        'timeout' =&gt; 60,
+        'weight' =&gt; 1
+    )
+);
+$cache = new \Phavour\Cache\AdapterMemcache($cacheConfig);
+
+$app-&gt;setCacheAdapter($cache);
+$app-&gt;setup();
+$app-&gt;run();</pre>
+
+    <div class="alert alert-info">
+        <strong>You can create your own cache adapter</strong><br />
+        Simply extend <code>\Phavour\Cache\AdapterAbstract</code> and implement the required abstract methods.
+    </div>
+</div>

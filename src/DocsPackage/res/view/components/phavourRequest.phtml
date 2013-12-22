@@ -1,0 +1,181 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container" id="top">
+    <div class="page-header">
+        <h1>
+            <code>\Phavour\Request</code>
+        </h1>
+    </div>
+
+    <p class="lead">
+        Interpreting the request from a user and turning it into an manageable object.
+    </p>
+    <p>
+        The <code>Request</code> object is is central to this framework. It interprets the request type, and any additional parameters sent by a user.
+    </p>
+    <p>
+        Each <code>Request</code> comes with the standard set of methods, that you'd expect from a framework.
+    </p>
+
+    <h2>
+        Core Methods
+    </h2>
+    <hr>
+
+    <p>
+        <code>Request</code> is passed through the application and into your runnables. To utilise it, simply call:
+    </p>
+
+    <pre>$this-&gt;getRequest();</pre>
+
+    <p>Or:</p>
+
+    <pre>$this-&gt;request;</pre>
+
+    <hr>
+    <p>
+        The <code>Request</code> object has the following methods, that you can use to manage user requests:
+    </p>
+    <hr>
+
+    <h3>
+        getMethod()
+    </h3>
+    <p>
+        As it sounds, the <code>getMethod()</code> method will return to you the HTTP Request Method made by the browser. Sometimes this can be <code>GET</code>, <code>POST</code>, <code>DELETE</code> etc.
+    </p>
+
+    <p>
+        By listening to the SERVER headers, you can manipulate the request types coming into your application as you wish.
+    </p>
+    <hr>
+
+    <h3>
+        isGet()
+    </h3>
+    <p>
+        This returns boolean, dependant on whether the request was a <code>GET</code>
+    </p>
+    <hr>
+
+    <h3>
+        isPost()
+    </h3>
+    <p>
+        This returns boolean, dependant on whether the request was a <code>POST</code>
+    </p>
+    <hr>
+
+    <h3>
+        isPut()
+    </h3>
+
+    <p>
+        This returns boolean, dependant on whether the request was a <code>PUT</code>
+    </p>
+    <hr>
+
+    <h3>
+        isDelete()
+    </h3>
+    <p>
+        This returns boolean, dependant on whether the request was a <code>DELETE</code>
+    </p>
+    <hr>
+
+    <h3>
+        getHeader($name)
+    </h3>
+    <p>
+        This returns the value of a header with a given <code>$name</code> or <code>null</code> if the header cannot be found.
+    </p>
+    <hr>
+
+    <h3>
+        getRequestPath()
+    </h3>
+    <p>
+        This returns a string of the path requested. Without any URL parameters. For example:
+    </p>
+    <p>
+        Request of: <code>/contact</code> would return <code>/contact</code>
+    </p>
+    <p>
+        Request of: <code>/contact?a=b</code> would return <code>/contact</code>
+    </p>
+    <hr>
+
+    <h3>
+        getRawRequestUri()
+    </h3>
+    <p>
+        This returns a string of the path requested. INCLUDING any URL parameters. For example:
+    </p>
+    <p>
+        Request of: <code>/contact</code> would return <code>/contact</code>
+    </p>
+    <p>
+        Request of: <code>/contact?a=b</code> would return <code>/contact?a=b</code>
+    </p>
+    <hr>
+
+    <h3>
+        getParams()
+    </h3>
+    <p>
+        This returns the array of parameters
+    </p>
+    <p>
+        The return would include any parameters, including those named in the <code>routes.php</code> file (if any).
+    </p>
+    <hr>
+
+    <h3>
+        setParam($key, $value)
+    </h3>
+    <p>
+        This method is used to manually set a parameter. Because of the nature of the <code>Request</code> object, the parameters you set are available anywhere in your runnables.
+    </p>
+    <hr>
+
+    <h3>
+        getParam($name, $default = null)
+    </h3>
+    <p>
+        To retrieve a parameter you can call this method. By default it will return the value of the parameter or null if the parameter isn't found.
+    </p>
+    <p>
+        You can override the default return by specifying a <code>$default</code> value to return. Quite commonly developers like to specify this as <code>false</code>.
+    </p>
+    <hr>
+
+    <h3>
+        getBody()
+    </h3>
+    <p>
+        In the case of a <code>PUT</code> request, you might need to retrieve the request body. This method returns the raw output from <code>php://input</code>
+    </p>
+    <hr>
+
+    <h3>
+        getIp()
+    </h3>
+    <p>
+        Retrieve the IP address of the request.
+    </p>
+    <p>
+        The ordering of the return is as follows:
+    </p>
+    <pre>$_SERVER['HTTP_X_FORWARDED_FOR']
+$_SERVER['HTTP_CLIENT_IP']
+$_SERVER['REMOTE_ADDR']</pre>
+    <hr>
+
+    <h3>
+        getClientIp()
+    </h3>
+    <p>
+        Retrieve the IP address of the request (alias of <code>getIp()</code>)
+    </p>
+</div>
