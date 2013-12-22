@@ -14,6 +14,8 @@ $app = new \Phavour\Application($dir);
 // Provide a cache adapter (not required)
 // @see \Phavour\Cache\AdapterNull
 // @see \Phavour\Cache\AdapterMemcache
+// @see \Phavour\Cache\AdapterApc
+// @see \Phavour\Cache\AdapterFileSystem
 $cache = new \Phavour\Cache\AdapterNull();
 
 // Pass the cache adapter to the application
