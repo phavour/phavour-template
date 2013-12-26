@@ -1,0 +1,167 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container" id="top">
+    <div class="page-header">
+        <h1>Routes</h1>
+    </div>
+
+    <p class="lead">
+        The routes file controls where requests should be sent.
+    </p>
+
+    <p>
+        As covered in the <a href="<?php echo $this->urlFor('docs.quickStart'); ?>#application-routes">Quick Start</a>, there are two main ways to write routees, both of which utilise a <code>routes.php</code> file.
+    </p>
+
+    <hr>
+    <h2 id="routes-php-file">Introduction to the <code>routes.php</code> File</h2>
+
+    <p>
+        The concept behind the <code>routes.php</code> file is that it should return an array upon an include.<br />
+        For instance, take this following basic example of a route. For this example we'll use the routes.php file located inside the <code>/src/DefaultPackage/res</code> folder.
+    </p>
+
+    <pre>// File: /src/DefaultPackage/res/routes.php
+&lt;?php
+return array(
+    'Default.index.index' =&gt; array(
+        'method' =&gt; 'GET|POST|PUT|DELETE',
+        'path' =&gt; '/',
+        'runnable' =&gt; 'Index::index',
+    )
+);</pre>
+
+    <h3>Naming the route</h3>
+
+    <p>
+        The route file above only contains one route. The name of which is the array key (in this case "Default.index.index"). Naming the routes inside packages should always begin with the package name (without the word "Package"). For example:<br />
+        <code>My.foo</code> should relate to a route in the 'MyPackage' package.<br />
+        <code>Test.foo.bar</code> should relate to a route in the 'TestPackage' package.
+    </p>
+
+    <h3>Required keys for a route</h3>
+
+    <p>
+        In actual fact, there isn't that much information required for a route. The only thing the application REALLY needs to know is:<br />
+    </p>
+
+    <ul>
+        <li>Request path - array key of 'path'</li>
+        <li>Runnable and method - array key of 'runnable'</li>
+    </ul>
+
+    <p>
+        We'll cover the 'path' key <a href="#path-and-params">later in this page</a>
+    </p>
+
+    <p>
+        The structure of the 'runnable' key inside a <strong>package specific route.php</strong> file should be:<br />
+    </p>
+    <pre>ClassName::methodName</pre>
+
+    <div class="alert alert-info">
+        There are some optional keys, which we'll cover in the next section.
+    </div>
+
+    <h3>Optional keys for a route</h3>
+
+    <p>
+        Routes are flexible, and adapt to your application needs. There are a few optional keys that you can give to your routes to make them a bit more specific.
+    </p>
+
+    <ul>
+        <li>'method' - a string of HTTP request methods to use for this route, (ex: "GET" or "GET|POST|PUT")</li>
+        <li>'params' - an array of static parameters to use for the route. These will be injected into your runnable method.</li>
+        <li>'package' - a string of the package name to utilise for this route (full name, so 'MyPackage' or 'DefaultPackage'
+    </ul>
+
+    <hr>
+    <h2>A full route example</h2>
+
+    <pre>// EXAMPLE
+&lt;?php
+return array(
+    'My.custom.route' =&gt; array(
+        'method' =&gt; 'GET|POST|PUT|DELETE', // take requests for GET POST PUT and DELETE
+        'path' =&gt; '/my/path', // requests for /my/path only.
+        'package' =&gt; 'MyPackage', // assign this route to 'MyPackage'
+        'runnable' =&gt; 'Foo::bar', // run the method called 'bar' in the class called 'Foo'
+        'params' =&gt; array( // inject this array of parameters to the method
+            'foo' =&gt; 'bar'
+        )
+    )
+);</pre>
+
+    <hr>
+    <h2 id="path-and-params">Path and Parameters</h2>
+
+    <p>
+        Creating dynamic routes is quite easy. You can simply include <code>{myParamName}</code> in the 'path'<br />
+        Take this for example:
+    </p>
+
+    <pre>'path' =&gt; '/view/{user}</pre>
+
+    <p>
+        That path above would route all requests matching '/view/xxxxx' to this specific route, and provide a parameter called 'user' that you can call upon to retrieve the parameter value.
+    </p>
+
+    <hr>
+    <h2 id="overriding-routes">Overriding a Route</h2>
+
+    <p>
+        Not all packages fit your needs. Thankfully, we've built in the ability to override routes to suit your needs.<br />
+        At the top level, an application can also have a <code>routes.php</code> file. This file needs to be located in: <code>/res/routes.php</code>
+    </p>
+
+    <p>
+        To override a route, you need simply to have a route in your <code>/res/routes.php</code> file which has the same name as the package specific route.<br />
+        Utilising the example at the top of this page, we've overriden this by providing a new package, class, method combination
+    </p>
+
+    <pre>// File: /res/routes.php
+&lt;?php
+return array(
+    'Default.index.index' =&gt; array(
+        'method' =&gt; 'GET|POST|PUT|DELETE',
+        'path' =&gt; '/',
+        'package' =&gt; 'MyPackage',
+        'runnable' =&gt; 'Foo::bar',
+    )
+);</pre>
+
+    <p>
+        Now that we've overriden the route for 'Default.index.index', from now on, all requests that match this route will be directed to:<br />
+    </p>
+
+    <ul>
+        <li>Package: <code>MyPackage</code></li>
+        <li>Class: <code>Foo</code></li>
+        <li>Method: <code>bar</code></li>
+    </ul>
+
+    <div class="alert alert-warning">
+        <p>
+            <strong>Gotcha!</strong><br />
+            If you provide a cache to the application, you'll need to either flush or disable it to see your route.
+        </p>
+    </div>
+
+    <h2 id="establishing-a-url">Generate a URL</h2>
+
+    <p>
+        Whether it's in your Runnable, or in a view, at some point you'll want to create a URL based on a route name.<br />
+        To do this, you can call:
+    </p>
+
+    <pre>echo $this-&gt;urlFor(
+    $routeName, // The name of the route (ex: 'Default.index.index')
+    array $params // A key value array of parameters to give the route (to populate a URL perhaps).
+);</pre>
+
+    <p>
+        This method <code>urlFor</code> is in the <code>\Phavour\Application</code> and <code>\Phavour\Runnable\View</code> classes, enabling you to use it anywhere you need to.
+    </p>
+
+</div>

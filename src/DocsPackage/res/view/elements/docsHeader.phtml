@@ -19,12 +19,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?php echo $this->urlFor('docs.components.bootingPhavour'); ?>">Booting Phavour</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'booting-phavour')); ?>">Booting Phavour</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Request &amp; Response</li>
-                        <li><a href="<?php echo $this->urlFor('docs.components.phavourRequest'); ?>">Request</a></li>
+                        <li><a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'phavour-request')); ?>">Request</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Config &amp; Routes</li>
+                        <li><a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'routes')); ?>">Routes</a></li>
                     </ul>
                 </li>
             </ul>

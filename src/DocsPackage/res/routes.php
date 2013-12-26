@@ -11,14 +11,9 @@ return array(
         'path' => '/docs/quick-start',
         'runnable' => 'Index::quickStart',
     ),
-    'docs.components.bootingPhavour' => array(
+    'docs.components.component' => array(
         'method' => 'GET',
-        'path' => '/docs/components/booting-phavour',
-        'runnable' => 'Components::bootingPhavour',
-    ),
-    'docs.components.phavourRequest' => array(
-        'method' => 'GET',
-        'path' => '/docs/components/phavour-request',
-        'runnable' => 'Components::phavourRequest',
+        'path' => '/docs/components/{name}',
+        'runnable' => 'Components::componentName',
     )
 );
