@@ -54,4 +54,8 @@ class Index extends Runnable
     public function quickStart()
     {
     }
+
+    public function helloPhavour()
+    {
+    }
 }

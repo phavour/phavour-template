@@ -19,7 +19,6 @@
                 <a href="#config-and-routes" class="list-group-item">Config &amp; Routes</a>
                 <a href="#application-config" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;Application Config</a>
                 <a href="#application-routes" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;Application Routes</a>
-                <a href="#hello-phavour" class="list-group-item">Hello Phavour!</a>
             </div>
         </div>
         <div class="col-md-9">
@@ -130,85 +129,10 @@ return array(
                 Using the routes like this gives you simple reusable code across projects by centralising things inside of the 'Package' structure.
             </p>
 
-            <hr>
-            <h1 id="hello-phavour">Hello Phavour!</h1>
             <p>
-                Great, so hopefully you've grasped a basic concept of how the framework is structured. Let's make something cool!
+                That brings us to the end of the quick start. If you want, dive a bit deeper into the <a href="/docs">documentation</a><br />
+                If you haven't yet tried it, give out <a href="<?php echo $this->urlFor('docs.helloPhavour'); ?>">Hello Phavour!</a> tutorial a whirl.
             </p>
-            <p>
-                Make a folder in <code>/src</code> called <code>HelloPackage</code>
-            </p>
-            <p>
-                Inside that folder, create these folders:
-                <div class="well">
-                    <code>src</code><br />
-                    <code>res</code><br />
-                    <code>res/view</code><br />
-                    <code>res/view/tutorial</code><br />
-                    <code>res/layout</code>
-                </div>
-            </p>
-            <p>
-                Now, go into the <code>/src/HelloPackage/src</code> folder and create a file called: <code>Tutorial.php</code><br />
-                OK. Open that file (<code>/src/HelloPackage/src/Tutorial.php</code>) and put this content in there:
-            </p>
-            <pre>&lt;?php
-namespace HelloPackage\src;
-
-use Phavour\Runnable;
-
-class Tutorial extends Runnable
-{
-    public function hello()
-    {
-        $this-&gt;view-&gt;name = 'Phavour!';
-    }
-}</pre>
-            <p>
-                You've just created your runnable!
-            </p>
-
-            <p>
-                Let's make a view! Inside the folder: <code>/src/HelloPackage/res/view/tutorial</code>, create a file called <code>hello.phtml</code>.
-            </p>
-
-            <p>
-                Now, open up that file (<code>/src/HelloPackage/res/view/tutorial/hello.phtml</code>), and put this content in:
-            </p>
-
-            <pre>&lt;h1&gt;Hello &lt;?php echo $this-&gt;name; ?&gt;&lt;/h1&gt;</pre>
-
-            <p>
-                Great, we've got the Runnable, we've got the method (action), and we've got a view. All that's left is to tell the application what requests to route to this class.
-            </p>
-
-            <p>
-                Create the file <code>routes.php</code> located in the <code>/src/HelloPackage/res</code> folder. The full path will be: <code>/src/HelloPackage/res/routes.php</code>
-            </p>
-
-            <p>
-                Inside the <code>/src/HelloPackage/res/routes.php</code> file, put this content:
-            </p>
-
-            <pre>&lt;?php
-return array(
-    'hello.tutorial.hello' =&gt; array(
-        'method' =&gt; 'GET|POST|PUT|DELETE',
-        'path' =&gt; '/tutorial/hello-phavour',
-        'runnable' =&gt; 'Tutorial::hello'
-    )
-);</pre>
-
-            <p>
-                Ready to fire it up?
-            </p>
-
-            <p>
-                Assuming you're running the application from localhost, you "should" be able to visit:<br />
-                <a href="http://localhost/tutorial/hello-phavour" target="_blank">http://localhost/tutorial/hello-phavour</a>
-            </p>
-
-            <p>That brings us to the end of the quick start. If you want, dive a bit deeper into the <a href="/docs">documentation</a></p>
         </div>
     </div>
 </div>

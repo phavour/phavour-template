@@ -47,11 +47,19 @@ class Components extends Runnable
         $this->view->setLayout('default.phtml');
     }
 
-    public function bootingPhavour()
+    public function componentName($name)
     {
-    }
+        $views = array(
+        	'booting-phavour' => 'bootingPhavour',
+        	'phavour-request' => 'phavourRequest',
+        	'routes' => 'routes',
+        	'config' => 'config'
+        );
+        if (array_key_exists($name, $views)) {
+            $this->view->setScriptName($views[$name]);
+            return;
+        }
 
-    public function phavourRequest()
-    {
+        return $this->notFound();
     }
 }
