@@ -96,10 +96,21 @@ return array(
         </p>
     </div>
 
-    <h2 id="retrieving-config">Retrieving a config setting</h2>
+    <h2 id="retrieving-config">Retrieving a Config Setting</h2>
 
-    <div class="alert alert-danger">
-        This needs to be done, but there's a PR outstanding which introduces a dependency.
-    </div>
+    <p>
+        Regardless of where you need it, at some point you'll need to retrieve a single application configuration setting.<br />
+        We've added the necessary methods to both the <code>Runnable</code> and the <code>View</code> to give you this ability.
+    </p>
+
+    <pre>// Retrieve a single key
+&lt;?php
+$val = $this-&gt;config('abc');
+</pre>
+
+    <pre>// Retrieve the entire config array
+&lt;?php
+$val = $this-&gt;getConfig();
+</pre>
 
 </div>
