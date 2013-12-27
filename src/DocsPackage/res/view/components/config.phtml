@@ -1,0 +1,105 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container" id="top">
+    <div class="page-header">
+        <h1>Config</h1>
+    </div>
+
+    <p class="lead">
+        The config file controls your applications configuration, and variables you need available.
+    </p>
+
+    <p>
+        As covered in the <a href="<?php echo $this->urlFor('docs.quickStart'); ?>#application-config">Quick Start</a>, there are two potential locations for a <code>config.php</code> file. Application level and Package level.
+    </p>
+
+    <hr>
+    <h2 id="config-php-file">Introduction to the <code>config.php</code> File</h2>
+
+    <p>
+        As with the <code>routes.php</code> file, the <code>config.php</code> file needs to return an array upon an include.<br />
+        For instance, take a look at the config.php file file located inside the <code>/src/DefaultPackage/res</code> folder.
+    </p>
+
+    <pre>// File: /src/DefaultPackage/res/config.php
+&lt;?php
+return array(
+    'DefaultPackage.exampleConfigKey' =&gt; 'this gets overridden'
+);</pre>
+
+    <p>
+        Now, take a look at the content of <code>/res/config.php</code>.
+    </p>
+
+    <pre>// File: /res/config.php
+&lt;?php
+return array(
+    'DefaultPackage.exampleConfigKey' =&gt; 'this IS overridden'
+);</pre>
+
+    <hr>
+    <h2 id="environment-configuration">Environment Configuration</h2>
+
+    <p>
+        The following keys are considered environmental configuration settings:
+    </p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td class="col-md-2">Name</td>
+                <td>Explanation</code></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-md-2"><code>ini.set</code></td>
+                <td>An array of name / value settings for <code>ini_set()</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <h2 id="overriding-package-configuration">Overriding a Package Configuration</h2>
+
+    <p>
+        Packages may utilise a Package specific configuration that doesn't always suit your needs. For example, a package may specify a key called <code>SomePackage.domain</code> as <code>example.com</code> but your domain is <code>foobar.com</code><br />
+        At the top level, an application can also have a <code>config.php</code> file. This file needs to be located in: <code>/res/config.php</code>
+    </p>
+
+    <p>
+        To override a configuration value, you need simply to have a key / value in your <code>/res/config.php</code> file which has the same key as the package config setting you wish to override.<br />
+        Given the scenario above, take this as an example of how we override a configuration setting:
+    </p>
+
+    <pre>// Example File: /src/SomePackage/res/config.php
+&lt;?php
+return array(
+    'SomePackage.domain' =&gt; 'example.com'
+);</pre>
+
+    <p>
+        We would override this configuration setting by adding the key of <code>SomePackage.domain</code> in the <code>/res/config.php</code> file.
+    </p>
+
+    <pre>// Example File: /res/config.php
+&lt;?php
+return array(
+    'SomePackage.domain' =&gt; 'example.com'
+);</pre>
+
+    <div class="alert alert-warning">
+        <p>
+            <strong>Gotcha!</strong><br />
+            If you provide a cache to the application, you'll need to either flush or disable it to see your new configuration value.
+        </p>
+    </div>
+
+    <h2 id="retrieving-config">Retrieving a config setting</h2>
+
+    <div class="alert alert-danger">
+        This needs to be done, but there's a PR outstanding which introduces a dependency.
+    </div>
+
+</div>

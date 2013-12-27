@@ -11,6 +11,11 @@ return array(
         'path' => '/docs/quick-start',
         'runnable' => 'Index::quickStart',
     ),
+    'docs.helloPhavour' => array(
+        'method' => 'GET',
+        'path' => '/docs/hello-phavour',
+        'runnable' => 'Index::helloPhavour',
+    ),
     'docs.components.component' => array(
         'method' => 'GET',
         'path' => '/docs/components/{name}',

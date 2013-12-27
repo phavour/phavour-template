@@ -52,7 +52,8 @@ class Components extends Runnable
         $views = array(
         	'booting-phavour' => 'bootingPhavour',
         	'phavour-request' => 'phavourRequest',
-        	'routes' => 'routes'
+        	'routes' => 'routes',
+        	'config' => 'config'
         );
         if (array_key_exists($name, $views)) {
             $this->view->setScriptName($views[$name]);

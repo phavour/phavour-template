@@ -1,0 +1,98 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container" id="top">
+    <div class="page-header">
+        <h1><small><a href="/docs">Docs</a> &raquo; </small>Hello Phavour!</h1>
+    </div>
+
+    <p class="lead">
+        Great, so hopefully you've grasped a basic concept of how the framework is structured. Now, let's make something cool!
+    </p>
+
+    <p>
+        If you haven't yet read it, take a look at our <a href="<?php echo $this->urlFor('docs.quickStart'); ?>">Quick Start</a> guide.
+    </p>
+
+    <p>
+        For the sake of this tutorial, we advise you use the <a href="https://github.com/phavour/phavour-template" target="_blank">Phavour Template</a> base.
+    </p>
+
+    <p>
+        Make a folder in <code>/src</code> called <code>HelloPackage</code>
+    </p>
+
+    <p>
+        Inside the <code>HelloPackage</code> folder, create this folder structure:
+    </p>
+
+    <div class="well">
+        /src/HelloPackage/<code>src</code><br />
+        /src/HelloPackage/<code>res</code><br />
+        /src/HelloPackage/<code>res/view</code><br />
+        /src/HelloPackage/<code>res/view/tutorial</code><br />
+        /src/HelloPackage/<code>res/layout</code>
+    </div>
+
+    <p>
+        Now, go into the <code>/src/HelloPackage/src</code> folder and create a file called: <code>Tutorial.php</code><br />
+        OK. Open that file (<code>/src/HelloPackage/src/Tutorial.php</code>) and put this content in there:
+    </p>
+
+    <pre>&lt;?php
+namespace HelloPackage\src;
+
+use Phavour\Runnable;
+
+class Tutorial extends Runnable
+{
+    public function hello()
+    {
+        $this-&gt;view-&gt;name = 'Phavour!';
+    }
+}</pre>
+
+    <p>
+        You've just created your runnable!
+    </p>
+
+    <p>
+        Let's make a view! Inside the folder: <code>/src/HelloPackage/res/view/tutorial</code>, create a file called <code>hello.phtml</code>.
+    </p>
+
+    <p>
+        Now, open up that file (<code>/src/HelloPackage/res/view/tutorial/hello.phtml</code>), and put this content in:
+    </p>
+
+    <pre>&lt;h1&gt;Hello &lt;?php echo $this-&gt;name; ?&gt;&lt;/h1&gt;</pre>
+
+    <p>
+        Great, we've got the Runnable, we've got the method (action), and we've got a view. All that's left is to tell the application what requests to route to this class.
+    </p>
+
+    <p>
+        Create the file <code>routes.php</code> located in the <code>/src/HelloPackage/res</code> folder. The full path will be: <code>/src/HelloPackage/res/routes.php</code>
+    </p>
+
+    <p>
+        Inside the <code>/src/HelloPackage/res/routes.php</code> file, put this content:
+    </p>
+
+    <pre>&lt;?php
+return array(
+    'hello.tutorial.hello' =&gt; array(
+        'method' =&gt; 'GET|POST|PUT|DELETE',
+        'path' =&gt; '/tutorial/hello-phavour',
+        'runnable' =&gt; 'Tutorial::hello'
+    )
+);</pre>
+
+    <p>
+        Ready to fire it up?
+    </p>
+
+    <p>
+        Assuming you're running the application from localhost, you "should" be able to visit:<br />
+        <a href="http://localhost/tutorial/hello-phavour" target="_blank">http://localhost/tutorial/hello-phavour</a>
+    </p>
+</div>
