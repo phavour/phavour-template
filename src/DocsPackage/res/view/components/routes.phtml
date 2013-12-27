@@ -43,7 +43,7 @@ return array(
     <h3>Required keys for a route</h3>
 
     <p>
-        In actual fact, there isn't that much information required for a route. The only thing the application REALLY needs to know is:<br />
+        In actual fact, there isn't that much information required for a route. The only thing the application REALLY needs to know is:
     </p>
 
     <ul>
@@ -75,6 +75,10 @@ return array(
         <li>'params' - an array of static parameters to use for the route. These will be injected into your runnable method.</li>
         <li>'package' - a string of the package name to utilise for this route (full name, so 'MyPackage' or 'DefaultPackage'
     </ul>
+
+    <p>
+        If not specified, the 'method' key will default back to only GET.
+    </p>
 
     <hr>
     <h2>A full route example</h2>
