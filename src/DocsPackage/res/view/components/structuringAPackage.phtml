@@ -1,0 +1,150 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container" id="top">
+    <div class="page-header">
+        <h1>
+            <small><a href="/docs">Docs</a> &raquo; </small>Structuring a Package
+        </h1>
+    </div>
+
+    <p class="lead">
+        Packages should follow the "write once, run anywhere" methodology. You can create some fantastic flexible packages that you can use over and over again.
+    </p>
+
+    <hr>
+    <div class="alert alert-success">
+        <p>
+            Need a quick start Package template? <a href="/documentation-assets/FirstPackage.zip" class="btn btn-info"><span class="glyphicon glyphicon-arrow-down"></span> Download Now</a>
+        </p>
+    </div>
+
+    <hr>
+    <h2 id="whats-a-package">What is a Phavour package?</h2>
+
+    <p>
+        In essence, a Package is a directory. It contains a few key elements as you can see from the layout below:
+    </p>
+
+    <pre>/project/src
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/src
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/src/<strong><span class="text-primary">MyRunnable.php</span></strong>
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/res
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/res/<strong><span class="text-primary">config.php</span></strong> - <a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'config')); ?>">Read more...</a>
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/res/<strong><span class="text-primary">routes.php</span></strong> - <a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'routes')); ?>">Read more...</a>
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/res/layout
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/res/layout/<strong><span class="text-primary">myHtmlLayout.phtml</span></strong>
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/res/view
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/res/view/<strong><span class="text-primary">myRunnable</span></strong>
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/res/view/<strong><span class="text-primary">myRunnable</span></strong>/<strong><span class="text-success">index.phtml</span></strong>
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/lib (optional)
+</pre>
+
+    <div class="alert alert-info">
+        <p>
+            We won't be covering the config.php and routes.php file. We've got dedicated pages to about those: <a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'config')); ?>" class="btn btn-sm btn-info">Config</a> <a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'routes')); ?>" class="btn btn-sm btn-info">Routes</a>
+        </p>
+    </div>
+
+    <hr>
+    <h3>The Package <code>src</code> folder</h3>
+
+    <p>
+        With other frameworks, this folder is comparable to the 'controllers' folder. In Phavour, we don't call them controllers, we call them Runnables.<br />
+        All your Runnables for this package need to go in this folder.
+    </p>
+
+    <h4>So... what does a Runnable look like?</h4>
+
+    <p>
+        A basic runnable (we'll call this one 'MyRunnable' as above) looks like the example below, we've added in the setting of the layout, and our first 'action method' called <code>index()</code>
+    </p>
+    <pre>&lt;?php
+namespace FirstPackage\src;
+
+use Phavour\Runnable;
+
+class MyRunnable extends Runnable
+{
+    public function init()
+    {
+        $this-&gt;view-&gt;setLayout('myHtmlLayout.phtml');
+    }
+
+    public function index()
+    {
+    }
+}</pre>
+    <div class="alert alert-warning">
+        The namespace of a Runnable inside a package should be: <code>MyPackage/src</code>.
+    </div>
+
+    <hr>
+    <h3>The Package <code>res/view</code> folder</h3>
+
+    <p>
+        The view folder holds all the necessary views for the package. The naming convention is important here, and Phavour expects to find a folder inside named according to your runnable (in this instance: <code>myRunnable</code>). The name of this folder should begin with a lower case letter.
+    </p>
+
+    <p>
+        Within the <code>res/view/myRunnable</code> folder, Phavour always looks for a file named after your 'action method' with a <code>.phtml</code> extension. Following the example on this page, we'll call it <code>index.phtml</code>
+    </p>
+
+    <p>
+        For this example, we'll use the following content inside the <code>FirstPackage/res/view/myRunnable/index.phtml</code> file:
+    </p>
+
+    <pre>&lt;h1&gt;
+    My First Package!
+&lt;/h1&gt;</pre>
+
+    <hr>
+    <h3>The Package <code>res/layout</code> folder</h3>
+
+    <p>
+        As you'd expect, Phavour supports reusable layouts for your view files. For this example, we'll use the following content inside a file called <code>myHtmlLayout.phtml</code>
+    </p>
+
+    <pre>&lt;?php
+/* @var $this \Phavour\Runnable\View */
+?&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;title&gt;My FirstPackage!&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;?php
+        echo $this-&gt;content();
+        ?&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+    <p>
+        Calling <code>echo $this-&gt;content();</code> inside your layout will place your view file content here.
+    </p>
+
+    <p>
+        By default, Phavour won't look for a layout. To use a layout you must specify it inside your Runnable (either in the <code>init()</code> or one of your action methods).
+    </p>
+
+    <hr>
+    <h3>The Package <code>lib</code> folder</h3>
+    <p>
+        The <code>lib</code> folder is a great place for you to store package-specific class files.
+    </p>
+    <p>
+        The base namespace of a class inside the lib folder should be: <code>MyPackage/lib</code>.
+    </p>
+
+    <hr>
+    <p>
+        Structuring a package to be reused is incredibly easy, and taking time to plan and consider the reusability of your Pakcages will save you a lot of time down the line.
+    </p>
+
+    <h2>Download a Template</h2>
+    <p>
+        You can download a template of this code at the <a href="#top">top of this page</a>.
+    </p>
+</div>
