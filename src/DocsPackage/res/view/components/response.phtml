@@ -1,0 +1,130 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container" id="top">
+    <div class="page-header">
+        <h1>
+            <small><a href="/docs">Docs</a> &raquo; </small><code>\Phavour\Http\Response</code>
+        </h1>
+    </div>
+
+    <p class="lead">
+        Managing the user response via a flexible HTTP response object.
+    </p>
+    <p>
+        The final response from a request is perhaps the most important part of a web application.
+    </p>
+    <p>
+        The <code>Response</code> object introduces a clean way to manage the various elements of a response.
+    </p>
+
+    <h2>
+        Core Methods
+    </h2>
+    <hr>
+
+    <p>
+        <code>Resposne</code> is passed through the application and into your runnables. To utilise it, simply call:
+    </p>
+
+    <pre>$this-&gt;getResponse();</pre>
+
+    <p>Or:</p>
+
+    <pre>$this-&gt;response;</pre>
+
+    <hr>
+    <p>
+        The <code>Response</code> object has the following methods, that you can use to manage responses:
+    </p>
+    <hr>
+
+    <h3>
+        getHeaders()
+    </h3>
+    <p>
+        This returns the array of response headers (which can be controlled)
+    </p>
+    <hr>
+
+    <h3>
+        getBody()
+    </h3>
+    <p>
+        Retrieve the content of the body that will ultimately be sent.
+    </p>
+    <hr>
+
+    <h3>
+        getStatus()
+    </h3>
+    <p>
+        This returns the integer of the HTTP response code, for example <code>200</code> or <code>403</code>
+    </p>
+    <hr>
+
+    <h3>
+        setHeaders($headers, $override = true)
+    </h3>
+
+    <p>
+        Set an array of headers, and optionally merge the current headers into the array, or override them all entirely.
+    </p>
+    <hr>
+
+    <h3>
+        setHeader($name, $value, $override = true)
+    </h3>
+    <p>
+        Set a single response header, based on the <code>$name</code> and <code>$value</code>. If <code>$override</code> is specified as <code>true</code> (it is by default) then the header will override the current header <code>$name</code> (if it's set).
+    </p>
+    <hr>
+
+    <h3>
+        setBody($body)
+    </h3>
+    <p>
+        Manually set the response body, great for REST based services.
+    </p>
+    <hr>
+
+    <h3>
+        setStatus($status)
+    </h3>
+    <p>
+        Set the status code of the response, for example: <code>200</code> or <code>403</code>.
+    </p>
+    <hr>
+
+    <h3>
+        cleanHeaders()
+    </h3>
+    <p>
+        Clear all current pending response headers from the stack.
+    </p>
+    <hr>
+
+    <h3>
+        redirect($url, $status = 302)
+    </h3>
+    <p>
+        Send the necessary headers (immediately) to redirect a user, by default this sends a <code>302 Found</code> response.
+    </p>
+    <hr>
+
+    <h3>
+        sendHeaders()
+    </h3>
+    <p>
+        This method sends all the pending headers as can be seen by using the <code>getHeaders()</code> method.
+    </p>
+    <hr>
+
+    <h3>
+        sendResponse()
+    </h3>
+    <p>
+        The method sends the response, first sending headers, then sending the body.
+    </p>
+    <hr>
+</div>
