@@ -2,8 +2,23 @@
 /* @var $this \Phavour\Runnable\View */
 ?>
 <div class="container">
-    <div class="page-header">
-        <h1>Phavour Documentation</h1>
+    <div class="jumbotron">
+        <h1>
+            Phavour Documentation
+        </h1>
+        <p class="lead">
+            Get up and running with Phavour.
+        </p>
+        <p>
+            <a class="btn btn-lg btn-primary" href="<?php echo $this->urlFor('docs.quickStart'); ?>" role="button">
+                Read the quick start &raquo;
+            </a>
+            <a class="btn btn-lg btn-info" href="<?php echo $this->urlFor('docs.helloPhavour'); ?>" role="button">
+                Hello Phavour! &raquo;
+            </a>
+            <a class="btn btn-lg btn-success" href="<?php echo $this->urlFor('docs.components.component', array('name' => 'structuring-a-package')); ?>" role="button">
+                Packages &raquo;
+            </a>
+        </p>
     </div>
-    <p class="lead">Get up and running with Phavour.</p>
 </div>
