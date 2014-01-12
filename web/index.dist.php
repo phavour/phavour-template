@@ -25,7 +25,13 @@ $loader = include '../vendor/autoload.php';
 $dir = realpath(dirname(__FILE__) . '/../');
 
 // Initialise the application
-$app = new \Phavour\Application($dir);
+$app = new \Phavour\Application(
+    $dir,
+    array(
+        new Phavour\PhavourTemplate\DefaultPackage\Package(),
+        new Phavour\PhavourTemplate\DocsPackage\Package()
+    )
+);
 
 // Provide a cache adapter (not required)
 // @see \Phavour\Cache\AdapterNull
