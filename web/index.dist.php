@@ -2,8 +2,24 @@
 // Define the application environment (if not already declared)
 define('APPLICATION_ENV', 'development'); // or 'production' or 'test'
 
-// Include your Autoload file
-include '../vendor/autoload.php';
+// Include the composer autoload file (production etc)
+/** @var @var \Composer\Autoload\ClassLoader $loader */
+$loader = include '../vendor/autoload.php';
+// Use APC to cache the autoloader for better performance
+//$apcLoader = new ApcClassLoader('phavour', $loader);
+//$loader->unregister();
+//$apcLoader->register(true);
+
+// Include the development autoload file (dev etc)
+///** @var $loaders \Composer\Autoload\ClassLoader[] */
+//$loaders = include '../autoload.php';
+// Use APC to cache the autoloader for better performance
+//for ($i = 0; $i < count($loaders); $i++)
+//{
+//    $apcLoader = new ApcClassLoader('phavour_' . $i, $loader);
+//    $loader->unregister();
+//    $apcLoader->register(true);
+//}
 
 // Declare the path to your project folder
 $dir = realpath(dirname(__FILE__) . '/../');
