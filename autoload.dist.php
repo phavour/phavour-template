@@ -21,6 +21,7 @@ $loader = new \Composer\Autoload\ClassLoader();
 $map = array(
     //'Phavour' => array(__DIR__ . '/../phavour')
     // Set this to your local Phavour git repository path
+    // or the path in your Vagrant machine to the Phavour library
 );
 
 // Class map
