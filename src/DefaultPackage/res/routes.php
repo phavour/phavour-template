@@ -4,5 +4,8 @@ return array(
         'method' => 'GET|POST|PUT|DELETE',
         'path' => '/',
         'runnable' => 'Index::index',
+        'allow' => array(
+            'from' => ''
+        )
     )
 );

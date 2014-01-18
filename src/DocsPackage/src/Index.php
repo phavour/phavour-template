@@ -39,11 +39,6 @@ class Index extends Runnable
 {
     public function init()
     {
-        if ($_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-            $e = new DebuggableException('You can only access this method from 127.0.0.1');
-            $e->setAdditionalData('Reason', 'Coded check of IP at: ' . __METHOD__);
-            throw $e;
-        }
         $this->view->setLayout('default.phtml');
     }
 
