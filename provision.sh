@@ -9,6 +9,7 @@ locale-gen en_GB.UTF-8
 sudo dpkg-reconfigure locales
 sudo apt-get install -y vim curl python-software-properties
 sudo apt-get install -y nginx php5-fpm
+sudo apt-get install -y php5-memcache memcached php-apc
 
 echo "Configuring nginx"
 sudo rm -rf /var/www
