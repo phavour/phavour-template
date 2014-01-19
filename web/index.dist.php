@@ -6,7 +6,7 @@ define('APPLICATION_ENV', 'development'); // or 'production' or 'test'
 /** @var @var \Composer\Autoload\ClassLoader $loader */
 $loader = include '../vendor/autoload.php';
 // Use APC to cache the autoloader for better performance
-//$apcLoader = new ApcClassLoader('phavour', $loader);
+//$apcLoader = new \Phavour\Autoload\ApcClassLoader('phavour', $loader);
 //$loader->unregister();
 //$apcLoader->register(true);
 
@@ -16,7 +16,7 @@ $loader = include '../vendor/autoload.php';
 // Use APC to cache the autoloader for better performance
 //for ($i = 0; $i < count($loaders); $i++)
 //{
-//    $apcLoader = new ApcClassLoader('phavour_' . $i, $loader);
+//    $apcLoader = new \Phavour\Autoload\ApcClassLoader('phavour_' . $i, $loader);
 //    $loader->unregister();
 //    $apcLoader->register(true);
 //}
