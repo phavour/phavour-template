@@ -47,14 +47,14 @@ $app-&gt;setup();
 $app-&gt;run();</pre>
 
     <hr>
-    <h2 id="setting-the-environment">Add a Cache</h2>
+    <h2 id="setting-the-environment">Add an Application Cache</h2>
 
     <p>
         Phavour caches data whenever possible. Doing so means less boot time for the application, and overall provides you with a fluid interface to speed up your application at runtime.
     </p>
 
     <div class="alert alert-warning">
-        While the application is in not in the <code>production</code> environment, Phavour will not utilise a cache.<br />
+        While the application is in not in the <code>production</code> environment, Phavour will not utilise the application cache.<br />
         It uses the null cache adapter, called: <code>\Phavour\Cache\AdapterNull</code> which will always return false
     </div>
 
@@ -82,4 +82,17 @@ $app-&gt;run();</pre>
         <strong>You can create your own cache adapter</strong><br />
         Simply extend <code>\Phavour\Cache\AdapterAbstract</code> and implement the required abstract methods.
     </div>
+
+    <hr>
+    <h2>Caching the autoloader with APC</h2>
+
+    <p>
+        Phavour gives you the ability to cache your <code>autoloader</code>.
+    </p>
+
+    <pre>&lt;?php
+$loader = include 'path/to/autoload.php';
+$apcLoader = new \Phavour\Autoload\ApcClassLoader('phavour', $loader);
+$loader->unregister();
+$apcLoader->register(true);</pre>
 </div>
