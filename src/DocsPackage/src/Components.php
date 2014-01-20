@@ -50,6 +50,7 @@ class Components extends Runnable
         	'response' => 'response',
         	'routes' => 'routes',
         	'config' => 'config',
+        	'auth' => 'auth',
         	'structuring-a-package' => 'structuringAPackage'
         );
         if (array_key_exists($name, $views)) {

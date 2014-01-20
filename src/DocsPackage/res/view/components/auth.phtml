@@ -1,0 +1,163 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container" id="top">
+    <div class="page-header">
+        <h1>
+            <small><a href="/docs">Docs</a> &raquo; </small>Authentication
+        </h1>
+    </div>
+
+    <p class="lead">
+        Phavour comes with a simple, yet effective way of managing user level authentication.
+    </p>
+
+    <hr>
+
+    <h2 id="creating-an-auth-adapter">Creating an authentication adapter</h2>
+
+    <p>
+        Phavour features an abstract class <code>\Phavour\Auth\AdapterAbstract</code> which provides you with the stub to create your very own, customised authentication adapter.
+    </p>
+
+    <p>
+        Your authentication adapter must contain the following methods:
+    </p>
+
+    <pre>    /**
+     * Get the final result
+     * @see \Phavour\Auth\Service::PHAVOUR_AUTH_SERVICE_SUCCESS
+     * @see \Phavour\Auth\Service::PHAVOUR_AUTH_SERVICE_INVALID
+     * @return integer
+     */
+    public function getResult();
+
+    /**
+     * Called on return of \Phavour\Auth\Service::PHAVOUR_AUTH_SERVICE_SUCCESS to retrieve
+     * the array of user identity
+     * @return array
+     */
+    public function getIdentity();
+
+    /**
+     * Called on return of \Phavour\Auth\Service::PHAVOUR_AUTH_SERVICE_SUCCESS to retrieve
+     * the array of user roles
+     * @return array
+     */
+    public function getRoles();</pre>
+
+    <hr>
+    <h3>Using your adapter with the authentication service</h3>
+
+    <p>
+        To authenticate a user, you'll need to construct an instance of <code>\Phavour\Auth\Service</code>, passing in an instance of your own authentication adapter.
+    </p>
+
+    <p>
+        For example, take this adapter as an example:
+    </p>
+
+    <pre>&lt;?php
+namespace My\Custom\Auth;
+
+use Phavour\Auth\AdapterAbstract;
+use Phavour\Auth\Service;
+
+class Adapter extends AdapterAbstract
+{
+    /**
+     * @var array|boolean false
+     */
+    private $identity = false;
+
+    /**
+     * @var array|boolean false
+     */
+    private $roles = false;
+
+    /**
+     * @var string|null
+     */
+    private $user = null;
+
+    /**
+     * @var string|null
+     */
+    private $pass = null;
+
+    /**
+     * @param string $user
+     * @param string $pass
+     */
+    public function setCredentials($user, $pass)
+    {
+        $this-&gt;user = $user;
+        $this-&gt;pass = $pass;
+    }
+
+    public function getResult()
+    {
+        $db = new \My\DbAdapter();
+        try {
+            $result = $db-&gt;getUser($this-&gt;user, $this-&gt;pass);
+            if ($result) {
+                $this-&gt;roles = $result-&gt;getUserRoles();
+                $this-&gt;identity = $result-&gt;getUserIdentity();
+                return Service::PHAVOUR_AUTH_SERVICE_SUCCESS;
+            } else {
+                return Service::PHAVOUR_AUTH_SERVICE_INVALID;
+            }
+        } catch (\Exception $e) {
+        }
+
+        return 999; // Anything other than Service::PHAVOUR_AUTH_SERVICE_SUCCESS or
+                    // Service::PHAVOUR_AUTH_SERVICE_INVALID
+    }
+
+    public function getIdentity()
+    {
+        return $this-&gt;identity;
+    }
+
+    public function getRoles()
+    {
+        return $this-&gt;roles;
+    }
+}</pre>
+
+    <p>
+        To use this adapter, we would do something like this:
+    </p>
+
+    <pre>&lt;?php
+function processlogin()
+{
+    $request = $this-&gt;getRequest();
+    $user = $request-&gt;getParam('user');
+    $pass = $request-&gt;getParam('password');
+    $adapter = new \My\Custom\Auth\Adapter();
+    $adapter-&gt;setCredentials($user, $pass);
+
+    $auth = new \Phavour\Auth\Service($adapter);
+    try {
+        $auth-&gt;login();
+    } catch (\Phavour\Auth\Exception\InvalidCredentialsException $e) {
+        // Login failed, invalid credentials
+        return false;
+    } catch (\Phavour\Auth\Exception\UnrecognisedAuthenticationResultException $ee) {
+        // Unrecognised authentication result
+        return false;
+    }
+
+    return true;
+}</pre>
+
+    <p>
+        At this point, we would know that if the return of <code>processlogin()</code> was <code>true</code> then <code>\Phavour\Auth</code> would be valid and hold the appropriate settings.
+    </p>
+
+    <p>
+        This simple, yet effective authentication system, combined with the <code>['allow']['roles']</code> key in a <a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'routes')); ?>#full-route-example">route</a>, provides you with the tools you need to manage a complex user authentication system.
+    </p>
+
+</div>
