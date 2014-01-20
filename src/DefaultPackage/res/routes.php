@@ -5,7 +5,8 @@ return array(
         'path' => '/',
         'runnable' => 'Index::index',
         'allow' => array(
-            'from' => ''
+            'from' => '',
+            'roles' => ''
         )
     )
 );

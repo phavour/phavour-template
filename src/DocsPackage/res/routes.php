@@ -6,7 +6,8 @@ return array(
         'path' => '/docs',
         'runnable' => 'Index::index',
         'allow' => array(
-            'from' => ''
+            'from' => '',
+            'roles' => ''
         )
     ),
     'docs.quickStart' => array(
@@ -14,7 +15,8 @@ return array(
         'path' => '/docs/quick-start',
         'runnable' => 'Index::quickStart',
         'allow' => array(
-            'from' => ''
+            'from' => '',
+            'roles' => ''
         )
     ),
     'docs.helloPhavour' => array(
@@ -22,7 +24,8 @@ return array(
         'path' => '/docs/hello-phavour',
         'runnable' => 'Index::helloPhavour',
         'allow' => array(
-            'from' => ''
+            'from' => '',
+            'roles' => ''
         )
     ),
     'docs.components.component' => array(
@@ -30,7 +33,8 @@ return array(
         'path' => '/docs/components/{name}',
         'runnable' => 'Components::componentName',
         'allow' => array(
-            'from' => ''
+            'from' => '',
+            'roles' => ''
         )
     )
 );

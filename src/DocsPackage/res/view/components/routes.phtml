@@ -76,7 +76,7 @@ return array(
         <li>'method' - a string of HTTP request methods to use for this route, (ex: "GET" or "GET|POST|PUT")</li>
         <li>'params' - an array of static parameters to use for the route. These will be injected into your runnable method.</li>
         <li>'package' - a string of the package name to utilise for this route (full name, so 'MyPackage' or 'DefaultPackage'</li>
-        <li>'allow' - an array, containing a key of 'from' with a value of IP addresses seperated by a pipe |</li>
+        <li>'allow' - an array, containing a key of 'from' with a value of IP addresses seperated by a pipe |, and/or a key of 'roles' with a list of user roles to allow</li>
     </ul>
 
     <p>
@@ -98,7 +98,8 @@ return array(
             'foo' =&gt; 'bar'
         ),
         'allow' =&gt; array(
-            'from' =&gt; '127.0.0.1|8.8.8.8' // only allow access from 127.0.0.1 and 8.8.8.8
+            'from' =&gt; '127.0.0.1|8.8.8.8', // only allow access from 127.0.0.1 and 8.8.8.8
+            'roles' =&gt; 'user|admin' // only allow access from user or admin roles
         )
     )
 );</pre>
