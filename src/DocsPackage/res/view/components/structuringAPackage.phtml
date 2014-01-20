@@ -28,6 +28,7 @@
 
     <pre>/project/src
 /project/src/<strong><span class="text-danger">FirstPackage</span></strong>
+/project/src/<strong><span class="text-danger">FirstPackage</span></strong>/Package.php
 /project/src/<strong><span class="text-danger">FirstPackage</span></strong>/src
 /project/src/<strong><span class="text-danger">FirstPackage</span></strong>/src/<strong><span class="text-primary">MyRunnable.php</span></strong>
 /project/src/<strong><span class="text-danger">FirstPackage</span></strong>/res
@@ -46,6 +47,14 @@
             We won't be covering the config.php and routes.php file. We've got dedicated pages to about those: <a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'config')); ?>" class="btn btn-sm btn-info">Config</a> <a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'routes')); ?>" class="btn btn-sm btn-info">Routes</a>
         </p>
     </div>
+
+    <hr>
+    <h3>The <code>Package.php</code> file</h3>
+
+    <p>
+        The Package class is used to initialize the package in <code>index.php</code>. You shouldn't have to make any
+        modifications to this class.
+    </p>
 
     <hr>
     <h3>The Package <code>src</code> folder</h3>

@@ -36,13 +36,30 @@
         /src/HelloPackage/<code>res/layout</code>
     </div>
 
+    <p>Drop the following <code>Package.php</code> at <code>/src/HelloPackage/Package.php</code></p>
+
+    <pre>&lt;?php
+namespace Phavour\PhavourTemplate\HelloPackage;
+
+/**
+ * Package
+ */
+class Package extends \Phavour\Package
+{
+    public function __construct()
+    {
+        $this->dir = __DIR__;
+        $this->namespace = __NAMESPACE__;
+    }
+}</pre>
+
     <p>
         Now, go into the <code>/src/HelloPackage/src</code> folder and create a file called: <code>Tutorial.php</code><br />
         OK. Open that file (<code>/src/HelloPackage/src/Tutorial.php</code>) and put this content in there:
     </p>
 
     <pre>&lt;?php
-namespace HelloPackage\src;
+namespace Phavour\PhavourTemplate\HelloPackage\src;
 
 use Phavour\Runnable;
 
@@ -97,4 +114,6 @@ return array(
         Assuming you're running the application from localhost, you "should" be able to visit:<br />
         <a href="http://localhost/tutorial/hello-phavour" target="_blank">http://localhost/tutorial/hello-phavour</a>
     </p>
+
+    <p>Please note that the namespace <code>Phavour\PhavourTemplate</code> comes from the <code>composer.json</code> file in the <a href="https://github.com/phavour/phavour-template" target="_blank">Phavour Template</a></p>
 </div>
