@@ -30,27 +30,16 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-namespace Phavour\PhavourTemplate\DocsPackage\src;
+namespace Phavour\PhavourTemplate\DefaultPackage;
 
-use Phavour\Runnable;
-use Phavour\DebuggableException;
-
-class Index extends Runnable
+/**
+ * Package
+ */
+class Package extends \Phavour\Package
 {
-    public function init()
+    public function __construct()
     {
-        $this->view->setLayout('default.phtml');
-    }
-
-    public function index()
-    {
-    }
-
-    public function quickStart()
-    {
-    }
-
-    public function helloPhavour()
-    {
+        $this->dir = __DIR__;
+        $this->namespace = __NAMESPACE__;
     }
 }

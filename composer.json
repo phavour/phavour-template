@@ -4,8 +4,8 @@
         "phavour/phavour" : "dev-master"
     },
     "autoload" : {
-        "psr-0" : {
-            "" : "src/"
+        "psr-4" : {
+            "Phavour\\PhavourTemplate\\" : "src/"
         }
     }
 }
