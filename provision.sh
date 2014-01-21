@@ -21,7 +21,7 @@ server {
     root /var/www;
     index index.php;
     try_files \$uri \$uri/ /index.php?\$query_string;
-  
+    sendfile off;
     location ~ ^/index\.php$ {
         include fastcgi_params;
         fastcgi_pass 127.0.0.1:9000;
