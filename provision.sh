@@ -21,6 +21,7 @@ server {
     root /var/www;
     index index.php;
     try_files \$uri \$uri/ /index.php?\$query_string;
+    # see http://stackoverflow.com/questions/12782946/js-and-css-files-in-vagrant-not-properly-encoded-when-saved-outside-of-the-vm
     sendfile off;
     location ~ ^/index\.php$ {
         include fastcgi_params;

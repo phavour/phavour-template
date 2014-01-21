@@ -6,7 +6,9 @@ body {
     height: 100%;
     /* The html and body elements cannot have any padding or margin. */
 }
-
+.block {
+    display: block;
+}
 .fork-me img {
     position: absolute;
     top: 0;
@@ -47,7 +49,8 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
-#footer .container p.text-muted {
+#footer .container p.text-muted,
+#footer .container p.text-muted a {
     color: #FFFFFF;
 }
 

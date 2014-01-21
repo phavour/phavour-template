@@ -10,6 +10,15 @@ return array(
             'roles' => ''
         )
     ),
+    'docs.license' => array(
+        'method' => 'GET',
+        'path' => '/docs/license',
+        'runnable' => 'Index::license',
+        'allow' => array(
+            'from' => '',
+            'roles' => ''
+        )
+    ),
     'docs.quickStart' => array(
         'method' => 'GET',
         'path' => '/docs/quick-start',

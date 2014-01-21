@@ -46,6 +46,10 @@ class Index extends Runnable
     {
     }
 
+    public function license()
+    {
+    }
+
     public function quickStart()
     {
     }
