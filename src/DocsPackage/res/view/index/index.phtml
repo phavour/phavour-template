@@ -2,23 +2,45 @@
 /* @var $this \Phavour\Runnable\View */
 ?>
 <div class="container">
-    <div class="jumbotron">
-        <h1>
-            Phavour Documentation
-        </h1>
-        <p class="lead">
-            Get up and running with Phavour.
-        </p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="<?php echo $this->urlFor('docs.quickStart'); ?>" role="button">
-                Read the quick start &raquo;
-            </a>
-            <a class="btn btn-lg btn-info" href="<?php echo $this->urlFor('docs.helloPhavour'); ?>" role="button">
-                Hello Phavour! &raquo;
-            </a>
-            <a class="btn btn-lg btn-success" href="<?php echo $this->urlFor('docs.components.component', array('name' => 'structuring-a-package')); ?>" role="button">
-                Packages &raquo;
-            </a>
-        </p>
+    <div class="row">
+        <div class="col-md-3">
+            <?php
+            $this->inflate('../elements/leftColumn.phtml');
+            ?>
+        </div>
+        <div class="col-md-9">
+            <blockquote>
+                <h1>
+                    Getting started with Phavour
+                </h1>
+                <hr>
+                <p>
+                    Quickly get up and running with Phavour by following one of our new tutorials.
+                </p>
+                <p>
+                    <a href="<?php echo $this->urlFor('docs.quickStart'); ?>" class="btn btn-warning">
+                        Read the quick start &raquo;
+                    </a>
+                    <a href="<?php echo $this->urlFor('docs.helloPhavour'); ?>" class="btn btn-info">
+                        Hello Phavour! &raquo;
+                    </a>
+                </p>
+            </blockquote>
+
+            <blockquote>
+                <h1>
+                    Write once, run anywhere
+                </h1>
+                <p>
+                    Phavour is built upon the belief that application development shouldn't be difficult. Make a package and use it time and time again across multiple projects.
+                </p>
+                <p>
+                    <a class="btn btn-success" href="<?php echo $this->urlFor('docs.components.component', array('name' => 'structuring-a-package')); ?>" role="button">
+                        Creating Packages in Phavour &raquo;
+                    </a>
+                </p>
+            </blockquote>
+
+        </div>
     </div>
 </div>
