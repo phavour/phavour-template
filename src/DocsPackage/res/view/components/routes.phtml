@@ -15,13 +15,13 @@
     <div class="row">
         <div class="col-md-3">
             <div class="list-group">
-                <a href="#routes-php-file" class="list-group-item">Introduction to routes.php</a>
-                <a href="#naming-the-route" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;Naming the route</a>
-                <a href="#required-keys" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;Required keys</a>
-                <a href="#optional-keys" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;Optional keys</a>
-                <a href="#full-route-example" class="list-group-item">Full route example</a>
-                <a href="#path-and-params" class="list-group-item">Path &amp; parameters</a>
-                <a href="#overriding-routes" class="list-group-item">Overriding routes</a>
+                <a href="#routes-php-file" class="list-group-item">Introduction to <code>routes.php</code></a>
+                <a href="#naming-the-route" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;Naming the Route</a>
+                <a href="#required-keys" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;Required Keys</a>
+                <a href="#optional-keys" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;Optional Keys</a>
+                <a href="#full-route-example" class="list-group-item">Full Route Example</a>
+                <a href="#path-and-params" class="list-group-item">Path &amp; Parameters</a>
+                <a href="#overriding-routes" class="list-group-item">Overriding Routes</a>
                 <a href="#establishing-a-url" class="list-group-item">Generating URLs</a>
             </div>
         </div>
@@ -48,7 +48,7 @@ return array(
     )
 );</pre>
 
-            <h3 id="naming-the-route">Naming the route</h3>
+            <h3 id="naming-the-route">Naming the Route</h3>
 
             <p>
                 The route file above only contains one route. The name of which is the array key (in this case "Default.index.index"). Naming the routes inside packages should always begin with the package name (without the word "Package"). For example:<br />
@@ -56,7 +56,7 @@ return array(
                 <code>Test.foo.bar</code> should relate to a route in the 'TestPackage' package.
             </p>
 
-            <h3 id="required-keys">Required keys for a route</h3>
+            <h3 id="required-keys">Required Keys for a Route</h3>
 
             <p>
                 In actual fact, there isn't that much information required for a route. The only thing the application REALLY needs to know is:
@@ -80,7 +80,7 @@ return array(
                 There are some optional keys, which we'll cover in the next section.
             </div>
 
-            <h3 id="optional-keys">Optional keys for a route</h3>
+            <h3 id="optional-keys">Optional Keys for a Route</h3>
 
             <p>
                 Routes are flexible, and adapt to your application needs. There are a few optional keys that you can give to your routes to make them a bit more specific.
@@ -98,7 +98,7 @@ return array(
             </p>
 
             <hr>
-            <h2 id="full-route-example">A full route example</h2>
+            <h2 id="full-route-example">A Full Route Example</h2>
 
             <pre>// EXAMPLE
 &lt;?php
