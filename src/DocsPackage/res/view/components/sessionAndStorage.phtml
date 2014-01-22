@@ -12,125 +12,133 @@
         We've built a couple of great ways to manage session level information.
     </p>
 
-    <hr>
+    <div class="row">
 
-    <h2 id="general-session-storage">General Session Storage</h2>
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#general-session-storage" class="list-group-item">General Session Storage</a>
+                <a href="#isolated-session-storage" class="list-group-item">Isolated Session Storage</a>
+            </div>
+        </div>
+        <div class="col-md-9">
 
-    <p>
-        Utilising <code>\Phavour\Session</code> you can store session level information quickly and easily.
-    </p>
+            <h2 id="general-session-storage">General Session Storage</h2>
 
-    <p>
-        Retrieve the Session instance:
-    </p>
+            <p>
+                Utilising <code>\Phavour\Session</code> you can store session level information quickly and easily.
+            </p>
 
-    <pre>\Phavour\Session::getInstance()</pre>
+            <p>
+                Retrieve the Session instance:
+            </p>
 
-    <p>
-        Storing an item:
-    </p>
+            <pre>\Phavour\Session::getInstance()</pre>
 
-    <pre>\Phavour\Session::getInstance()-&gt;set('foo', 'bar'); // stores 'bar' under the name of 'foo'</pre>
+            <p>
+                Storing an item:
+            </p>
 
-    <p>
-        Retrieving an item:
-    </p>
+            <pre>\Phavour\Session::getInstance()-&gt;set('foo', 'bar'); // stores 'bar' under the name of 'foo'</pre>
 
-    <pre>\Phavour\Session::getInstance()-&gt;get('foo'); // returns foo</pre>
+            <p>
+                Retrieving an item:
+            </p>
 
-    <p>
-        Removing an item:
-    </p>
+            <pre>\Phavour\Session::getInstance()-&gt;get('foo'); // returns foo</pre>
 
-    <pre>\Phavour\Session::getInstance()-&gt;remove('foo'); // removes foo</pre>
+            <p>
+                Removing an item:
+            </p>
 
-    <p>
-        Removing all items:
-    </p>
+            <pre>\Phavour\Session::getInstance()-&gt;remove('foo'); // removes foo</pre>
 
-    <pre>\Phavour\Session::getInstance()-&gt;removeAll(); // removes all general storage items</pre>
+            <p>
+                Removing all items:
+            </p>
 
-    <p>
-        Destroy the storage instance entirely
-    </p>
+            <pre>\Phavour\Session::getInstance()-&gt;removeAll(); // removes all general storage items</pre>
 
-    <pre>\Phavour\Session::getInstance()-&gt;destroy(); // removes all session references to general storage</pre>
+            <p>
+                Destroy the storage instance entirely
+            </p>
 
-    <p>
-        Destroy the storage instance and regenerate the session_id
-    </p>
+            <pre>\Phavour\Session::getInstance()-&gt;destroy(); // removes all session references to general storage</pre>
 
-    <pre>\Phavour\Session::getInstance()-&gt;destroy(true); // clears all session, and regenerates a session_id</pre>
-    <div class="alert alert-warning">
-        Passing the <code>true</code> parameter here will destroy the entire user session, even the isolated containers.
-    </div>
+            <p>
+                Destroy the storage instance and regenerate the session_id
+            </p>
 
-    <hr>
+            <pre>\Phavour\Session::getInstance()-&gt;destroy(true); // clears all session, and regenerates a session_id</pre>
+            <div class="alert alert-warning">
+                Passing the <code>true</code> parameter here will destroy the entire user session, even the isolated containers.
+            </div>
 
-    <h2 id="isolated-session-storage">Isolated Session Storage</h2>
+            <hr>
 
-    <p>
-        Rather than Phavour utilising the top level <code>$_SESSION</code> for all storage, we chose to create session isolations. This means that within your session data you can have independant containers holding specific information.
-    </p>
+            <h2 id="isolated-session-storage">Isolated Session Storage</h2>
 
-    <p>
-        Take (for example) an ecommerce site. You might have a single storage container for the shopping basket, one for the delivery address, and one for the billing address.<br />
-        By seperating the containers, you always know which one you're currently dealing with.
-    </p>
+            <p>
+                Rather than Phavour utilising the top level <code>$_SESSION</code> for all storage, we chose to create session isolations. This means that within your session data you can have independant containers holding specific information.
+            </p>
 
-    <p>
-        Retrieve an isolated storage container:
-    </p>
+            <p>
+                Take (for example) an ecommerce site. You might have a single storage container for the shopping basket, one for the delivery address, and one for the billing address.<br />
+                By seperating the containers, you always know which one you're currently dealing with.
+            </p>
 
-    <pre>$container = new \Phavour\Session\Storage('misc'); // Retrieves a container called 'misc'</pre>
+            <p>
+                Retrieve an isolated storage container:
+            </p>
 
-    <p>
-        Storing an item:
-    </p>
+            <pre>$container = new \Phavour\Session\Storage('misc'); // Retrieves a container called 'misc'</pre>
 
-    <pre>$container = new \Phavour\Session\Storage('misc');
+            <p>
+                Storing an item:
+            </p>
+
+            <pre>$container = new \Phavour\Session\Storage('misc');
 $container-&gt;set('foo', 'bar'); // stores 'bar' under the name of 'foo'</pre>
 
-    <p>
-        Retrieving an item:
-    </p>
+            <p>
+                Retrieving an item:
+            </p>
 
-    <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre>$container = new \Phavour\Session\Storage('misc');
 $container-&gt;-&gt;get('foo'); // returns foo</pre>
 
-    <p>
-        Retrieving all items:
-    </p>
+            <p>
+                Retrieving all items:
+            </p>
 
-    <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre>$container = new \Phavour\Session\Storage('misc');
 $container-&gt;-&gt;getAll(); // returns the array of data held</pre>
 
-    <p>
-        Removing an item:
-    </p>
+            <p>
+                Removing an item:
+            </p>
 
     <pre>$container = new \Phavour\Session\Storage('misc');
 $container-&gt;remove('foo'); // removes foo</pre>
 
-    <p>
-        Removing all items:
-    </p>
+            <p>
+                Removing all items:
+            </p>
 
-    <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre>$container = new \Phavour\Session\Storage('misc');
 $container-&gt;removeAll(); // removes all general storage items</pre>
 
-    <p>
-        Destroy the container instance entirely
-    </p>
+            <p>
+                Destroy the container instance entirely
+            </p>
 
-    <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre>$container = new \Phavour\Session\Storage('misc');
 $container-&gt;destroy(); // completely removes the isolated session container</pre>
 
-    <p>
-        Making the container readonly
-    </p>
+            <p>
+                Making the container readonly
+            </p>
 
-    <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre>$container = new \Phavour\Session\Storage('misc');
 $container-&gt;set('foo', 'bar'); // store 'bar' under the name of 'foo'
 
 $container-&gt;lock(); // Make the container readonly
@@ -141,30 +149,31 @@ $container-&gt;unlock(); // make the container read / write again
 
 $container-&gt;set('foo', 'foobar'); // the value of 'foo' is now 'foobar' because the container is unlocked</pre>
 
-    <p>
-        Checking if the session is locked
-    </p>
+            <p>
+                Checking if the session is locked
+            </p>
 
-    <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre>$container = new \Phavour\Session\Storage('misc');
 if ($container-&gt;isLocked()) {
     echo 'Container is locked';
 } else {
     echo 'Container is unlocked';
 }</pre>
 
-    <p>
-        Things to note about locked containers:
-    </p>
+            <p>
+                Things to note about locked containers:
+            </p>
 
-    <p>
-        If you lock an isolated storage container, then the following methods will have no effect and return false:
-    </p>
+            <p>
+                If you lock an isolated storage container, then the following methods will have no effect and return false:
+            </p>
 
-    <ul>
-        <li>set()</li>
-        <li>remove()</li>
-        <li>removeAll()</li>
-        <li>destroy()</li>
-    </ul>
-
+            <ul>
+                <li>set()</li>
+                <li>remove()</li>
+                <li>removeAll()</li>
+                <li>destroy()</li>
+            </ul>
+        </div>
+    </div>
 </div>

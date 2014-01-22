@@ -12,19 +12,27 @@
         Phavour comes with a simple, yet effective way of managing user level authentication.
     </p>
 
-    <hr>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#creating-an-auth-adapter" class="list-group-item">Creating an Adapter</a>
+                <a href="#example-adapter" class="list-group-item">Example Authentication Adapter</a>
+                <a href="#using-your-adapter" class="list-group-item">Using Your Adapter</a>
+            </div>
+        </div>
+        <div class="col-md-9">
 
-    <h2 id="creating-an-auth-adapter">Creating an authentication adapter</h2>
+            <h2 id="creating-an-auth-adapter">Creating an authentication adapter</h2>
 
-    <p>
-        Phavour features an abstract class <code>\Phavour\Auth\AdapterAbstract</code> which provides you with the stub to create your very own, customised authentication adapter.
-    </p>
+            <p>
+                Phavour features an abstract class <code>\Phavour\Auth\AdapterAbstract</code> which provides you with the stub to create your very own, customised authentication adapter.
+            </p>
 
-    <p>
-        Your authentication adapter must contain the following methods:
-    </p>
+            <p>
+                Your authentication adapter must contain the following methods:
+            </p>
 
-    <pre>    /**
+            <pre>    /**
      * Get the final result
      * @see \Phavour\Auth\Service::PHAVOUR_AUTH_SERVICE_SUCCESS
      * @see \Phavour\Auth\Service::PHAVOUR_AUTH_SERVICE_INVALID
@@ -46,18 +54,18 @@
      */
     public function getRoles();</pre>
 
-    <hr>
-    <h3>Using your adapter with the authentication service</h3>
+            <hr>
+            <h3 id="example-adapter">Using your adapter with the authentication service</h3>
 
-    <p>
-        To authenticate a user, you'll need to construct an instance of <code>\Phavour\Auth\Service</code>, passing in an instance of your own authentication adapter.
-    </p>
+            <p>
+                To authenticate a user, you'll need to construct an instance of <code>\Phavour\Auth\Service</code>, passing in an instance of your own authentication adapter.
+            </p>
 
-    <p>
-        For example, take this adapter as an example:
-    </p>
+            <p>
+                For example, take this adapter as an example:
+            </p>
 
-    <pre>&lt;?php
+            <pre>&lt;?php
 namespace My\Custom\Auth;
 
 use Phavour\Auth\AdapterAbstract;
@@ -125,11 +133,12 @@ class Adapter extends AdapterAbstract
     }
 }</pre>
 
-    <p>
-        To use this adapter, we would do something like this:
-    </p>
+            <h3 id="using-your-adapter">Using your adapter</h3>
+            <p>
+                To use this adapter, we would do something like this:
+            </p>
 
-    <pre>&lt;?php
+            <pre>&lt;?php
 function processlogin()
 {
     $request = $this-&gt;getRequest();
@@ -152,12 +161,13 @@ function processlogin()
     return true;
 }</pre>
 
-    <p>
-        At this point, we would know that if the return of <code>processlogin()</code> was <code>true</code> then <code>\Phavour\Auth</code> would be valid and hold the appropriate settings.
-    </p>
+            <p>
+                At this point, we would know that if the return of <code>processlogin()</code> was <code>true</code> then <code>\Phavour\Auth</code> would be valid and hold the appropriate settings.
+            </p>
 
-    <p>
-        This simple, yet effective authentication system, combined with the <code>['allow']['roles']</code> key in a <a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'routes')); ?>#full-route-example">route</a>, provides you with the tools you need to manage a complex user authentication system.
-    </p>
-
+            <p>
+                This simple, yet effective authentication system, combined with the <code>['allow']['roles']</code> key in a <a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'routes')); ?>#full-route-example">route</a>, provides you with the tools you need to manage a complex user authentication system.
+            </p>
+        </div>
+    </div>
 </div>
