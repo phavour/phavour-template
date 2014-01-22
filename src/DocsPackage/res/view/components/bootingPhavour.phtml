@@ -11,34 +11,43 @@
     <p class="lead">
         Controlling the boot of Phavour.
     </p>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#basic-configuration" class="list-group-item">Basic Configuration</a>
+                <a href="#setting-the-environment" class="list-group-item">Setting the Environment</a>
+                <a href="#add-an-application-cache" class="list-group-item">Add an Application Cache</a>
+                <a href="#autoloader-caching-with-apc" class="list-group-item">Caching the Autoloader with APC</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <p>
+                The <code>/web/index.php</code> controls the users entry into your application, and comes with a few minor settings.
+            </p>
 
-    <p>
-        The <code>/web/index.php</code> controls the users entry into your application, and comes with a few minor settings.
-    </p>
+            <hr>
+            <h2 id="basic-configuration">Basic Configuration</h2>
 
-    <hr>
-    <h2 id="basic-configuration">Basic Configuration</h2>
+            <p>
+                Below is an example of the minimum content for a Phavour index.php file.
+            </p>
 
-    <p>
-        Below is an example of the minimum content for a Phavour index.php file.
-    </p>
-
-    <pre>&lt;?php
+            <pre>&lt;?php
 include '/path/to/autoloader.php';
 $dir = realpath(__DIR__ . '/../');
 $app = new \Phavour\Application($dir);
 $app-&gt;setup();
 $app-&gt;run();</pre>
 
-    <hr>
-    <h2 id="setting-the-environment">Setting The Environment</h2>
+            <hr>
+            <h2 id="setting-the-environment">Setting The Environment</h2>
 
-    <p>
-        Phavour recognises the environments of <code>test</code>, <code>development</code>, and <code>production</code>.<br />
-        If you don't specify the <code>APPLICATION_ENV</code> then the application will default to production and won't show useful information while developing.
-    </p>
+            <p>
+                Phavour recognises the environments of <code>test</code>, <code>development</code>, and <code>production</code>.<br />
+                If you don't specify the <code>APPLICATION_ENV</code> then the application will default to production and won't show useful information while developing.
+            </p>
 
-    <pre>&lt;?php
+            <pre>&lt;?php
 include '/path/to/autoloader.php';
 define('APPLICATION_ENV', 'development');
 $dir = realpath(__DIR__ . '/../');
@@ -46,19 +55,19 @@ $app = new \Phavour\Application($dir);
 $app-&gt;setup();
 $app-&gt;run();</pre>
 
-    <hr>
-    <h2 id="setting-the-environment">Add an Application Cache</h2>
+            <hr>
+            <h2 id="add-an-application-cache">Add an Application Cache</h2>
 
-    <p>
-        Phavour caches data whenever possible. Doing so means less boot time for the application, and overall provides you with a fluid interface to speed up your application at runtime.
-    </p>
+            <p>
+                Phavour caches data whenever possible. Doing so means less boot time for the application, and overall provides you with a fluid interface to speed up your application at runtime.
+            </p>
 
-    <div class="alert alert-warning">
-        While the application is in not in the <code>production</code> environment, Phavour will not utilise the application cache.<br />
-        It uses the null cache adapter, called: <code>\Phavour\Cache\AdapterNull</code> which will always return false
-    </div>
+            <div class="alert alert-warning">
+                While the application is in not in the <code>production</code> environment, Phavour will not utilise the application cache.<br />
+                It uses the null cache adapter, called: <code>\Phavour\Cache\AdapterNull</code> which will always return false
+            </div>
 
-    <pre>&lt;?php
+            <pre>&lt;?php
 include '/path/to/autoloader.php';
 define('APPLICATION_ENV', 'production');
 $dir = realpath(__DIR__ . '/../');
@@ -78,21 +87,23 @@ $app-&gt;setCacheAdapter($cache);
 $app-&gt;setup();
 $app-&gt;run();</pre>
 
-    <div class="alert alert-info">
-        <strong>You can create your own cache adapter</strong><br />
-        Simply extend <code>\Phavour\Cache\AdapterAbstract</code> and implement the required abstract methods.
-    </div>
+            <div class="alert alert-info">
+                <strong>You can create your own cache adapter</strong><br />
+                Simply extend <code>\Phavour\Cache\AdapterAbstract</code> and implement the required abstract methods.
+            </div>
 
-    <hr>
-    <h2>Caching the autoloader with APC</h2>
+            <hr>
+            <h2 id="autoloader-caching-with-apc">Caching the autoloader with APC</h2>
 
-    <p>
-        Phavour gives you the ability to cache your <code>autoloader</code>.
-    </p>
+            <p>
+                Phavour gives you the ability to cache your <code>autoloader</code>.
+            </p>
 
-    <pre>&lt;?php
+            <pre>&lt;?php
 $loader = include 'path/to/autoload.php';
 $apcLoader = new \Phavour\Autoload\ApcClassLoader('phavour', $loader);
-$loader->unregister();
-$apcLoader->register(true);</pre>
+$loader-&gt;unregister();
+$apcLoader-&gt;register(true);</pre>
+        </div>
+    </div>
 </div>

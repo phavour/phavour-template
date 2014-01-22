@@ -51,6 +51,7 @@ class Components extends Runnable
         	'routes' => 'routes',
         	'config' => 'config',
         	'auth' => 'auth',
+        	'session-and-storage' => 'sessionAndStorage',
         	'structuring-a-package' => 'structuringAPackage'
         );
         if (array_key_exists($name, $views)) {
