@@ -52,7 +52,8 @@ class Components extends Runnable
         	'config' => 'config',
         	'auth' => 'auth',
         	'session-and-storage' => 'sessionAndStorage',
-        	'structuring-a-package' => 'structuringAPackage'
+        	'structuring-a-package' => 'structuringAPackage',
+        	'middleware' => 'middleware'
         );
         if (array_key_exists($name, $views)) {
             $this->view->setScriptName($views[$name]);

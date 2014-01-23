@@ -1,0 +1,88 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container" id="top">
+    <div class="page-header">
+        <h1>
+            <small><a href="/docs">Docs</a> &raquo; </small>Application Middleware
+        </h1>
+    </div>
+
+    <p class="lead">
+        Adding middleware gives you control over the request before it reaches your runnable, and the response before it outputs.
+    </p>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#using-middleware" class="list-group-item">Using Middleware</a>
+                <a href="#example-middleware" class="list-group-item">Example Middleware</a>
+                <a href="#using-your-middleware" class="list-group-item">Using Your Middleware</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h2 id="using-middleware">
+                Using Middleware
+            </h2>
+            <p>
+                Middleware is a great way of accessing the users request before it reaches your application logic.<br />
+                Phavour gives you direct access to the <code>Request</code> and <code>Response</code> objects and handles this process for you.
+            </p>
+            <p>
+                To write your own middleware, you simply need to extend <code>\Phavour\Middleware\MiddlewareAbstract</code> and implement the methods <code>onBefore</code> and <code>onAfter</code>.
+            </p>
+
+            <h2 id="example-middleware">
+                Example Middleware
+            </h2>
+
+            <p>
+                Below, you'll see an example middleware. It doesn't do much, but the flexibility is there for you to do almost anything with your application.
+            </p>
+
+            <pre>&lt;?php
+namespace My\Namespace;
+
+use Phavour\Middleware\MiddlewareAbstract;
+
+class MyMiddleware extends MiddlewareAbstract
+{
+    public function onBefore()
+    {
+        $this-&gt;response-&gt;setHeader('foo', 'bar');
+    }
+
+    public function onAfter()
+    {
+        $this-&gt;response-&gt;setHeader('abc', '123');
+    }
+}</pre>
+
+            <p>
+                The <code>onBefore()</code> method is called prior to the construction of your Runnable, and the <code>onAfter()</code> method is called just prior to returning the response to the user.
+            </p>
+
+            <h2 id="using-your-middleware">
+                Using Your Middleware
+            </h2>
+
+            <p>
+                As you already know. Phavour is about speed. It won't look for Middleware, in fact, you have to tell it where your middleware can be found.
+            </p>
+            <p>
+                Taking the example from above, we would need to edit the <code>/res/config.php</code> file, adding the array key of <code>Middleware</code> with an array containing the class names (as a string) of your middleware.
+            </p>
+            <pre>// File: /res/config.php
+&lt;?php
+return array(
+    'Middleware' =&gt; array(
+        '\My\Namespace\MyMiddleware'
+    )
+);</pre>
+
+            <p>
+                As far as the possibilities of how you use Middleware, it's completely up to you.
+            </p>
+
+        </div>
+    </div>
+</div>
