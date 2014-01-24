@@ -5,6 +5,8 @@ return array(
         'method' => 'GET',
         'path' => '/docs',
         'runnable' => 'Index::index',
+        'view.directRender' => true,
+        'view.layout' => 'default',
         'allow' => array(
             'from' => '',
             'roles' => ''
@@ -14,6 +16,8 @@ return array(
         'method' => 'GET',
         'path' => '/docs/license',
         'runnable' => 'Index::license',
+        'view.directRender' => true,
+        'view.layout' => 'default',
         'allow' => array(
             'from' => '',
             'roles' => ''
@@ -23,6 +27,8 @@ return array(
         'method' => 'GET',
         'path' => '/docs/quick-start',
         'runnable' => 'Index::quickStart',
+        'view.directRender' => true,
+        'view.layout' => 'default',
         'allow' => array(
             'from' => '',
             'roles' => ''
@@ -32,6 +38,8 @@ return array(
         'method' => 'GET',
         'path' => '/docs/hello-phavour',
         'runnable' => 'Index::helloPhavour',
+        'view.directRender' => true,
+        'view.layout' => 'default',
         'allow' => array(
             'from' => '',
             'roles' => ''

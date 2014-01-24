@@ -86,12 +86,65 @@ return array(
                 Routes are flexible, and adapt to your application needs. There are a few optional keys that you can give to your routes to make them a bit more specific.
             </p>
 
-            <ul>
-                <li>'method' - a string of HTTP request methods to use for this route, (ex: "GET" or "GET|POST|PUT")</li>
-                <li>'params' - an array of static parameters to use for the route. These will be injected into your runnable method.</li>
-                <li>'package' - a string of the package name to utilise for this route (full name, so 'MyPackage' or 'DefaultPackage'</li>
-                <li>'allow' - an array, containing a key of 'from' with a value of IP addresses seperated by a pipe |, and/or a key of 'roles' with a list of user roles to allow</li>
-            </ul>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-md-2">Key</th>
+                        <th class="col-md-1">Type</th>
+                        <th>Explanation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>method</td>
+                        <td><code>string</code></td>
+                        <td>a string of HTTP request methods to use for this route, (ex: "GET" or "GET|POST|PUT")</td>
+                    </tr>
+                    <tr>
+                        <td>params</td>
+                        <td>
+                            <code>array</code>
+                        </td>
+                        <td>
+                            Array of static parameters to use for the route. These will be injected into your runnable method.<br />
+                            Example: <code>array('foo' =&gt; 'bar');</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>package</td>
+                        <td>
+                            <code>string</code>
+                        </td>
+                        <td>
+                            Package name to utilise for this route.<br />
+                            Example: <code>MyPackage</code> or <code>DefaultPackage</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>allow</td>
+                        <td><code>array</code></td>
+                        <td>
+                            ACL control for IP Addresses (<code>from</code>) and authentication roles (<code>roles</code>).<br />
+                            Values should be seperated by a pipe (<code>|</code>)<br />
+                            Example:
+                            <pre>array(
+    'from' =&gt; '127.0.0.1|8.8.8.8',
+    'roles' =&gt; 'user|admin'
+);</pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>view.directRender</td>
+                        <td><code>boolean</code></td>
+                        <td>If <code>true</code>, this tells Phavour to just render your corresponding view file, and ignore the Runnable</td>
+                    </tr>
+                    <tr>
+                        <td>view.layout</td>
+                        <td><code>string</code></td>
+                        <td>The name of your layout file. For example, a value of <code>default</code> would relate to a layout file called <code>default.phtml</code></td>
+                    </tr>
+                </tbody>
+            </table>
 
             <p>
                 If not specified, the 'method' key will default back to only GET.
@@ -114,7 +167,9 @@ return array(
         'allow' =&gt; array(
             'from' =&gt; '127.0.0.1|8.8.8.8', // only allow access from 127.0.0.1 and 8.8.8.8
             'roles' =&gt; 'user|admin' // only allow access from user or admin roles
-        )
+        ),
+        'view.directRender' =&gt; false, // don't directly render the view, process the Runnable fully
+        'view.layout' =&gt; 'loginPage' // use the layout 'loginPage' (without the phtml extension)
     )
 );</pre>
 
