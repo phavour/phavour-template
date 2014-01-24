@@ -41,20 +41,4 @@ class Index extends Runnable
     {
         $this->view->setLayout('default.phtml');
     }
-
-    public function index()
-    {
-    }
-
-    public function license()
-    {
-    }
-
-    public function quickStart()
-    {
-    }
-
-    public function helloPhavour()
-    {
-    }
 }
