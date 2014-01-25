@@ -32,7 +32,7 @@
                 Below is an example of the minimum content for a Phavour index.php file.
             </p>
 
-            <pre>&lt;?php
+            <pre class="prettyprint lang-php">&lt;?php
 include '/path/to/autoloader.php';
 $dir = realpath(__DIR__ . '/../');
 $app = new \Phavour\Application($dir);
@@ -47,7 +47,7 @@ $app-&gt;run();</pre>
                 If you don't specify the <code>APPLICATION_ENV</code> then the application will default to production and won't show useful information while developing.
             </p>
 
-            <pre>&lt;?php
+            <pre class="prettyprint lang-php">&lt;?php
 include '/path/to/autoloader.php';
 define('APPLICATION_ENV', 'development');
 $dir = realpath(__DIR__ . '/../');
@@ -67,7 +67,7 @@ $app-&gt;run();</pre>
                 It uses the null cache adapter, called: <code>\Phavour\Cache\AdapterNull</code> which will always return false
             </div>
 
-            <pre>&lt;?php
+            <pre class="prettyprint lang-php">&lt;?php
 include '/path/to/autoloader.php';
 define('APPLICATION_ENV', 'production');
 $dir = realpath(__DIR__ . '/../');
@@ -99,7 +99,7 @@ $app-&gt;run();</pre>
                 Phavour gives you the ability to cache your <code>autoloader</code>.
             </p>
 
-            <pre>&lt;?php
+            <pre class="prettyprint lang-php">&lt;?php
 $loader = include 'path/to/autoload.php';
 $apcLoader = new \Phavour\Autoload\ApcClassLoader('phavour', $loader);
 $loader-&gt;unregister();

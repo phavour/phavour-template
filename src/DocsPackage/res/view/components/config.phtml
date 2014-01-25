@@ -34,7 +34,7 @@
                 For instance, take a look at the config.php file file located inside the <code>/src/DefaultPackage/res</code> folder.
             </p>
 
-            <pre>// File: /src/DefaultPackage/res/config.php
+            <pre class="prettyprint lang-php">// File: /src/DefaultPackage/res/config.php
 &lt;?php
 return array(
     'DefaultPackage.exampleConfigKey' =&gt; 'this gets overridden'
@@ -44,7 +44,7 @@ return array(
                 Now, take a look at the content of <code>/res/config.php</code>.
             </p>
 
-            <pre>// File: /res/config.php
+            <pre class="prettyprint lang-php">// File: /res/config.php
 &lt;?php
 return array(
     'DefaultPackage.exampleConfigKey' =&gt; 'this IS overridden'
@@ -85,7 +85,7 @@ return array(
                 Given the scenario above, take this as an example of how we override a configuration setting:
             </p>
 
-            <pre>// Example File: /src/SomePackage/res/config.php
+            <pre class="prettyprint lang-php">// Example File: /src/SomePackage/res/config.php
 &lt;?php
 return array(
     'SomePackage.domain' =&gt; 'example.com'
@@ -95,7 +95,7 @@ return array(
                 We would override this configuration setting by adding the key of <code>SomePackage.domain</code> in the <code>/res/config.php</code> file.
             </p>
 
-            <pre>// Example File: /res/config.php
+            <pre class="prettyprint lang-php">// Example File: /res/config.php
 &lt;?php
 return array(
     'SomePackage.domain' =&gt; 'example.com'
@@ -115,12 +115,12 @@ return array(
                 We've added the necessary methods to both the <code>Runnable</code> and the <code>View</code> to give you this ability.
             </p>
 
-            <pre>// Retrieve a single key
+            <pre class="prettyprint lang-php">// Retrieve a single key
 &lt;?php
 $val = $this-&gt;config('abc');
 </pre>
 
-            <pre>// Retrieve the entire config array
+            <pre class="prettyprint lang-php">// Retrieve the entire config array
 &lt;?php
 $val = $this-&gt;getConfig();
 </pre>

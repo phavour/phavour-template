@@ -32,7 +32,7 @@
                 Your authentication adapter must contain the following methods:
             </p>
 
-            <pre>    /**
+            <pre class="prettyprint lang-php">    /**
      * Get the final result
      * @see \Phavour\Auth\Service::PHAVOUR_AUTH_SERVICE_SUCCESS
      * @see \Phavour\Auth\Service::PHAVOUR_AUTH_SERVICE_INVALID
@@ -65,7 +65,7 @@
                 For example, take this adapter as an example:
             </p>
 
-            <pre>&lt;?php
+            <pre class="prettyprint lang-php">&lt;?php
 namespace My\Custom\Auth;
 
 use Phavour\Auth\AdapterAbstract;
@@ -138,7 +138,7 @@ class Adapter extends AdapterAbstract
                 To use this adapter, we would do something like this:
             </p>
 
-            <pre>&lt;?php
+            <pre class="prettyprint lang-php">&lt;?php
 function processlogin()
 {
     $request = $this-&gt;getRequest();

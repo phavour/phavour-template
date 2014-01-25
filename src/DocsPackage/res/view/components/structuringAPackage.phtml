@@ -38,7 +38,7 @@
                 In essence, a Package is a directory. It contains a few key elements as you can see from the layout below:
             </p>
 
-            <pre>/project/src
+            <pre class="prettyprint lang-php">/project/src
 /project/src/<strong><span class="text-danger">FirstPackage</span></strong>
 /project/src/<strong><span class="text-danger">FirstPackage</span></strong>/Package.php
 /project/src/<strong><span class="text-danger">FirstPackage</span></strong>/src
@@ -81,7 +81,7 @@
             <p>
                 A basic runnable (we'll call this one 'MyRunnable' as above) looks like the example below, we've added in the setting of the layout, and our first 'action method' called <code>index()</code>
             </p>
-            <pre>&lt;?php
+            <pre class="prettyprint lang-php">&lt;?php
 namespace FirstPackage\src;
 
 use Phavour\Runnable;
@@ -116,7 +116,7 @@ class MyRunnable extends Runnable
                 For this example, we'll use the following content inside the <code>FirstPackage/res/view/myRunnable/index.phtml</code> file:
             </p>
 
-            <pre>&lt;h1&gt;
+            <pre class="prettyprint lang-php">&lt;h1&gt;
     My First Package!
 &lt;/h1&gt;</pre>
 
@@ -127,7 +127,7 @@ class MyRunnable extends Runnable
                 As you'd expect, Phavour supports reusable layouts for your view files. For this example, we'll use the following content inside a file called <code>myHtmlLayout.phtml</code>
             </p>
 
-            <pre>&lt;?php
+            <pre class="prettyprint lang-php">&lt;?php
 /* @var $this \Phavour\Runnable\View */
 ?&gt;
 &lt;!DOCTYPE html&gt;
