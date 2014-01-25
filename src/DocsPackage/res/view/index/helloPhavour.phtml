@@ -38,7 +38,7 @@
 
     <p>Drop the following <code>Package.php</code> at <code>/src/HelloPackage/Package.php</code></p>
 
-    <pre>&lt;?php
+    <pre class="prettyprint lang-php">&lt;?php
 namespace Phavour\PhavourTemplate\HelloPackage;
 
 /**
@@ -58,7 +58,7 @@ class Package extends \Phavour\Package
         OK. Open that file (<code>/src/HelloPackage/src/Tutorial.php</code>) and put this content in there:
     </p>
 
-    <pre>&lt;?php
+    <pre class="prettyprint lang-php">&lt;?php
 namespace Phavour\PhavourTemplate\HelloPackage\src;
 
 use Phavour\Runnable;
@@ -83,7 +83,7 @@ class Tutorial extends Runnable
         Now, open up that file (<code>/src/HelloPackage/res/view/tutorial/hello.phtml</code>), and put this content in:
     </p>
 
-    <pre>&lt;h1&gt;Hello &lt;?php echo $this-&gt;name; ?&gt;&lt;/h1&gt;</pre>
+    <pre class="prettyprint lang-php">&lt;h1&gt;Hello &lt;?php echo $this-&gt;name; ?&gt;&lt;/h1&gt;</pre>
 
     <p>
         Great, we've got the Runnable, we've got the method (action), and we've got a view. All that's left is to tell the application what requests to route to this class.
@@ -97,7 +97,7 @@ class Tutorial extends Runnable
         Inside the <code>/src/HelloPackage/res/routes.php</code> file, put this content:
     </p>
 
-    <pre>&lt;?php
+    <pre class="prettyprint lang-php">&lt;?php
 return array(
     'hello.tutorial.hello' =&gt; array(
         'method' =&gt; 'GET|POST|PUT|DELETE',

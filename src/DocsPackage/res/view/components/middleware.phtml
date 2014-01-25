@@ -39,7 +39,7 @@
                 Below, you'll see an example middleware. It doesn't do much, but the flexibility is there for you to do almost anything with your application.
             </p>
 
-            <pre>&lt;?php
+            <pre class="prettyprint lang-php">&lt;?php
 namespace My\Namespace;
 
 use Phavour\Middleware\MiddlewareAbstract;
@@ -71,7 +71,7 @@ class MyMiddleware extends MiddlewareAbstract
             <p>
                 Taking the example from above, we would need to edit the <code>/res/config.php</code> file, adding the array key of <code>Middleware</code> with an array containing the class names (as a string) of your middleware.
             </p>
-            <pre>// File: /res/config.php
+            <pre class="prettyprint lang-php">// File: /res/config.php
 &lt;?php
 return array(
     'Middleware' =&gt; array(

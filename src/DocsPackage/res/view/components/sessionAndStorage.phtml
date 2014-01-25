@@ -32,43 +32,43 @@
                 Retrieve the Session instance:
             </p>
 
-            <pre>\Phavour\Session::getInstance()</pre>
+            <pre class="prettyprint lang-php">\Phavour\Session::getInstance()</pre>
 
             <p>
                 Storing an item:
             </p>
 
-            <pre>\Phavour\Session::getInstance()-&gt;set('foo', 'bar'); // stores 'bar' under the name of 'foo'</pre>
+            <pre class="prettyprint lang-php">\Phavour\Session::getInstance()-&gt;set('foo', 'bar'); // stores 'bar' under the name of 'foo'</pre>
 
             <p>
                 Retrieving an item:
             </p>
 
-            <pre>\Phavour\Session::getInstance()-&gt;get('foo'); // returns foo</pre>
+            <pre class="prettyprint lang-php">\Phavour\Session::getInstance()-&gt;get('foo'); // returns foo</pre>
 
             <p>
                 Removing an item:
             </p>
 
-            <pre>\Phavour\Session::getInstance()-&gt;remove('foo'); // removes foo</pre>
+            <pre class="prettyprint lang-php">\Phavour\Session::getInstance()-&gt;remove('foo'); // removes foo</pre>
 
             <p>
                 Removing all items:
             </p>
 
-            <pre>\Phavour\Session::getInstance()-&gt;removeAll(); // removes all general storage items</pre>
+            <pre class="prettyprint lang-php">\Phavour\Session::getInstance()-&gt;removeAll(); // removes all general storage items</pre>
 
             <p>
                 Destroy the storage instance entirely
             </p>
 
-            <pre>\Phavour\Session::getInstance()-&gt;destroy(); // removes all session references to general storage</pre>
+            <pre class="prettyprint lang-php">\Phavour\Session::getInstance()-&gt;destroy(); // removes all session references to general storage</pre>
 
             <p>
                 Destroy the storage instance and regenerate the session_id
             </p>
 
-            <pre>\Phavour\Session::getInstance()-&gt;destroy(true); // clears all session, and regenerates a session_id</pre>
+            <pre class="prettyprint lang-php">\Phavour\Session::getInstance()-&gt;destroy(true); // clears all session, and regenerates a session_id</pre>
             <div class="alert alert-warning">
                 Passing the <code>true</code> parameter here will destroy the entire user session, even the isolated containers.
             </div>
@@ -90,55 +90,55 @@
                 Retrieve an isolated storage container:
             </p>
 
-            <pre>$container = new \Phavour\Session\Storage('misc'); // Retrieves a container called 'misc'</pre>
+            <pre class="prettyprint lang-php">$container = new \Phavour\Session\Storage('misc'); // Retrieves a container called 'misc'</pre>
 
             <p>
                 Storing an item:
             </p>
 
-            <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre class="prettyprint lang-php">$container = new \Phavour\Session\Storage('misc');
 $container-&gt;set('foo', 'bar'); // stores 'bar' under the name of 'foo'</pre>
 
             <p>
                 Retrieving an item:
             </p>
 
-            <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre class="prettyprint lang-php">$container = new \Phavour\Session\Storage('misc');
 $container-&gt;-&gt;get('foo'); // returns foo</pre>
 
             <p>
                 Retrieving all items:
             </p>
 
-            <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre class="prettyprint lang-php">$container = new \Phavour\Session\Storage('misc');
 $container-&gt;-&gt;getAll(); // returns the array of data held</pre>
 
             <p>
                 Removing an item:
             </p>
 
-    <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre class="prettyprint lang-php">$container = new \Phavour\Session\Storage('misc');
 $container-&gt;remove('foo'); // removes foo</pre>
 
             <p>
                 Removing all items:
             </p>
 
-            <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre class="prettyprint lang-php">$container = new \Phavour\Session\Storage('misc');
 $container-&gt;removeAll(); // removes all general storage items</pre>
 
             <p>
                 Destroy the container instance entirely
             </p>
 
-            <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre class="prettyprint lang-php">$container = new \Phavour\Session\Storage('misc');
 $container-&gt;destroy(); // completely removes the isolated session container</pre>
 
             <p>
                 Making the container readonly
             </p>
 
-            <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre class="prettyprint lang-php">$container = new \Phavour\Session\Storage('misc');
 $container-&gt;set('foo', 'bar'); // store 'bar' under the name of 'foo'
 
 $container-&gt;lock(); // Make the container readonly
@@ -153,7 +153,7 @@ $container-&gt;set('foo', 'foobar'); // the value of 'foo' is now 'foobar' becau
                 Checking if the session is locked
             </p>
 
-            <pre>$container = new \Phavour\Session\Storage('misc');
+            <pre class="prettyprint lang-php">$container = new \Phavour\Session\Storage('misc');
 if ($container-&gt;isLocked()) {
     echo 'Container is locked';
 } else {
