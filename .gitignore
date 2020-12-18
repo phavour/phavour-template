@@ -4,4 +4,6 @@ vendor
 web/index.php
 composer.lock
 autoload.php
-Vagrantfile
+.idea
+.vagrant
+web/index.php
