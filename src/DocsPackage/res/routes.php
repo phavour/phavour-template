@@ -53,5 +53,14 @@ return array(
             'from' => '',
             'roles' => ''
         )
+    ),
+    'docs.auth' => array(
+        'method' => 'GET',
+        'path' => '/docs/auth',
+        'runnable' => 'Auth::authDocs',
+        'allow' => array(
+            'from' => '',
+            'roles' => ''
+        )
     )
 );

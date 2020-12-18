@@ -1,0 +1,70 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container" id="top">
+    <div class="page-header">
+        <h1>
+            <small><a href="/docs">Docs</a> &raquo; </small>Authenticating with Phavour
+        </h1>
+    </div>
+
+    <?php
+    if ($this->fileLines !== null) {
+    ?>
+        <p>
+            <a class="btn btn-primary" href="<?php echo $this->urlFor('docs.auth'); ?>">Back</a>
+        </p>
+        <p>
+            The source code for <code><?php echo htmlentities($this->fileName); ?></code> is below.
+        </p>
+        <pre><?php
+            foreach ($this->fileLines as $line) {
+                echo htmlentities($line);
+            }
+        ?></pre>
+    <?php
+    } else {
+    ?>
+
+        <p class="lead">
+            So you want to build an authentication system?
+        </p>
+
+        <p>
+            We've included an example <code>AuthenticationPackage</code> in this project. It's located in <code>src/AuthenticationPackage</code>
+        </p>
+
+        <p>
+            Give it a go by visiting <a href="<?php echo $this->urlFor('Authentication.index'); ?>"><?php echo $this->urlFor('Authentication.index'); ?></a>. Or check out the source code for the files below:
+        </p>
+
+        <h2>Authentication files:</h2>
+        <table class="table table-condensed">
+            <?php
+            foreach ($this->files as $file) {
+            ?>
+                <tr>
+                    <td>
+                        <?php
+                        if (strstr($file, '.') === false) {
+                        ?>
+                            <code><small>AuthenticationPackage/</small><?php echo $file; ?></code> (directory)
+                        <?php
+                        } else {
+                        ?>
+                            <a href="<?php echo $this->urlFor('docs.auth'); ?>?file=<?php echo urlencode($file); ?>">
+                                <code><small>AuthenticationPackage/</small><?php echo $file; ?></code>
+                            </a>
+                        <?php
+                        }
+                        ?>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+        </table>
+    <?php
+    }
+    ?>
+</div>

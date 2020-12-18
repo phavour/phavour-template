@@ -12,5 +12,9 @@
         You're logged in!
     </p>
 
-    <a href="<?php echo $this->urlFor('Authentication.logout'); ?>" class="btn btn-primary">Logout</a>
+    <p>
+        <a href="<?php echo $this->urlFor('docs.components.component', ['name' => 'auth']); ?>" class="btn btn-primary">
+            Back to auth docs
+        </a> <a href="<?php echo $this->urlFor('Authentication.logout'); ?>" class="btn btn-primary">Logout</a>
+    </p>
 </div>

@@ -18,6 +18,7 @@
                 <a href="#creating-an-auth-adapter" class="list-group-item">Creating an Adapter</a>
                 <a href="#example-adapter" class="list-group-item">Example Authentication Adapter</a>
                 <a href="#sample-implementation" class="list-group-item">Sample Implementation</a>
+                <a href="#example-authentication" class="list-group-item">See an example</a>
             </div>
         </div>
         <div class="col-md-9">
@@ -168,6 +169,17 @@ function processlogin()
             <p>
                 This simple, yet effective authentication system, combined with the <code>['allow']['roles']</code> key in a <a href="<?php echo $this->urlFor('docs.components.component', array('name' => 'routes')); ?>#full-route-example">route</a>, provides you with the tools you need to manage a complex user authentication system.
             </p>
+
+            <h2 id="example-authentication">Example Authentication</h2>
+
+                <p>
+                    We've bundled in a basic <code>AuthenticationPackage</code> example for you. This will help you hit the ground running.
+                </p>
+
+                <p>
+                    View the files online by visiting: <a href="<?php echo $this->urlFor('docs.auth'); ?>"><?php echo $this->urlFor('docs.auth'); ?></a><br />
+                    Or, try it out <a href="<?php echo $this->urlFor('Authentication.index'); ?>">here</a>
+                </p>
         </div>
     </div>
 </div>
