@@ -3,7 +3,7 @@
 define('APPLICATION_ENV', 'development'); // or 'production' or 'test'
 
 // Include the composer autoload file (production etc)
-/** @var @var \Composer\Autoload\ClassLoader $loader */
+/** @var \Composer\Autoload\ClassLoader $loader */
 $loader = include '../vendor/autoload.php';
 // Use APC to cache the autoloader for better performance
 //$apcLoader = new \Phavour\Autoload\ApcClassLoader('phavour', $loader);
