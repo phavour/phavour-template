@@ -30,36 +30,19 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-namespace Phavour\PhavourTemplate\DocsPackage\src;
+namespace Phavour\PhavourTemplate\DefaultPackage\Src;
 
 use Phavour\Runnable;
-use Phavour\DebuggableException;
 
-class Components extends Runnable
+class Index extends Runnable
 {
     public function init()
     {
-        $this->view->setLayout('default.phtml');
     }
 
-    public function componentName($name)
+    public function index()
     {
-        $views = array(
-        	'booting-phavour' => 'bootingPhavour',
-        	'request' => 'request',
-        	'response' => 'response',
-        	'routes' => 'routes',
-        	'config' => 'config',
-        	'auth' => 'auth',
-        	'session-and-storage' => 'sessionAndStorage',
-        	'structuring-a-package' => 'structuringAPackage',
-        	'middleware' => 'middleware'
-        );
-        if (array_key_exists($name, $views)) {
-            $this->view->setScriptName($views[$name]);
-            return;
-        }
-
-        return $this->notFound();
+        $this->view->data = 'I\'m from the runnable!';
+        $this->view->setLayout('default.phtml');
     }
 }

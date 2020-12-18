@@ -1,0 +1,16 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container container-login">
+    <div class="page-header">
+        <h1>
+            Hello <?php echo $this->name; ?> &lt;<?php echo $this->email; ?>&gt;
+        </h1>
+    </div>
+
+    <p>
+        You're logged in!
+    </p>
+
+    <a href="<?php echo $this->urlFor('Authentication.logout'); ?>" class="btn btn-primary">Logout</a>
+</div>

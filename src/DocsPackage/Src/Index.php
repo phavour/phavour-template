@@ -30,20 +30,14 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-namespace Phavour\PhavourTemplate\DefaultPackage\src;
+namespace Phavour\PhavourTemplate\DocsPackage\Src;
 
 use Phavour\Runnable;
-use Phavour\DebuggableException;
 
 class Index extends Runnable
 {
     public function init()
     {
-    }
-
-    public function index()
-    {
-        $this->view->data = 'I\'m from the runnable!';
         $this->view->setLayout('default.phtml');
     }
 }

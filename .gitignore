@@ -7,3 +7,4 @@ autoload.php
 .idea
 .vagrant
 web/index.php
+.DS_Store

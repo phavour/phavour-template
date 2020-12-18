@@ -1,0 +1,52 @@
+<?php
+/* @var $this \Phavour\Runnable\View */
+?>
+<div class="container container-login">
+    <div class="page-header">
+        <h1>
+            Login
+        </h1>
+    </div>
+
+    <p>
+        Correct values here are:
+    </p>
+    <ul>
+        <li><strong>Email: </strong> user@example.com</li>
+        <li><strong>Password: </strong> password</li>
+    </ul>
+
+    <?php
+    if ($this->authError) {
+    ?>
+        <div class="alert alert-danger">
+            <p>
+                <strong>You provided invalid credentials</strong>
+            </p>
+        </div>
+    <?php
+    }
+    ?>
+
+    <div class="row">
+        <form class="form-horizontal col-md-6 col-md-offset-3" role="form" method="POST" action="<?php echo $this->urlFor('Authentication.login'); ?>">
+            <div class="form-group">
+                <label for="email" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" id="email" value="test@example.com" name="email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="password" value="password" name="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-6">
+                    <button type="submit" class="btn btn-default">Sign in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
